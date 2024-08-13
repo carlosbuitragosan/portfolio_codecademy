@@ -1,0 +1,50 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* HEADER  */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+.header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar {
+  flex-basis: 50%;
+}
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.menu__item {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 900;
+  transition: all 0.3s ease-in-out;
+}
