@@ -13,7 +13,20 @@ img {
   box-sizing: border-box;
 }
 
+:root {
+  --grey: black;
+  --bar-width: 40px;
+  --bar-height: 4px;
+  --bar-gap: 3px;
+  --animation: 200ms ease-in-out;
+  --burger-height: calc(var(--bar-height) * 3 + var(--bar-gap) * 2);
+}
+
 /* HEADER  */
+
+.burger__menu {
+  display: none;
+}
 
 .header {
   display: flex;
@@ -46,5 +59,96 @@ img {
 .logo {
   font-size: 1.8rem;
   font-weight: 900;
-  transition: all 0.3s ease-in-out;
+}
+
+/* BURGER MENU */
+@media only screen and (max-width: 500px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .menu {
+    flex-direction: column;
+  }
+
+  .navbar {
+    position: absolute;
+    top: 80px;
+    transform: translateY(
+      -150%
+    ); /* Initially hide the menu above the viewport */
+    opacity: 0;
+    transition:
+      opacity 400ms ease-in-out,
+      transform 800ms ease-in-out;
+    padding-bottom: 1rem;
+    background: var(--orange);
+  }
+
+  .burger__menu {
+    --x-width: calc(
+      var(--burger-height) * 1.41421356237
+    ); /* calculates the length of the lines when they become a cross (multiply by the square root of 2) */
+    position: absolute;
+    top: 32px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--bar-gap);
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .burger__menu input, /* checkbox. middle line */
+  .burger__menu::before, /* top line */
+  .burger__menu::after {
+    /* bottom line */
+    content: '';
+    width: var(--bar-width);
+    height: var(--bar-height);
+    border-radius: 18px;
+    background: var(--grey);
+    transition:
+      opacity var(--animation),
+      /* transition for opacity, width, length and rotate */ width
+        var(--animation),
+      rotate var(--animation),
+      translate var(--animation);
+    transform-origin: left; /* the axis where the lines rotate are now on the left */
+  }
+
+  .burger__menu input {
+    appearance: none; /* removes checkbox appareance and takes the above settings (widht, length) */
+    pointer-events: none; /* disable click on the checkbox so that the click is handled by the b_menu */
+  }
+
+  .burger__menu:has(input:checked)::before {
+    rotate: 45deg; /*rotates the top line downwards */
+    width: var(
+      --x-width
+    ); /*sets the new length of the line when it becomes a cross */
+    translate: 0 calc(var(--bar-height) / -2); /*moves the axis slightly up */
+  }
+
+  .burger__menu:has(input:checked)::after {
+    rotate: -45deg; /* rotates the bottom line upwards */
+    width: var(
+      --x-width
+    ); /*sets the new length of the line when it becomes a cross */
+    translate: 0 calc(var(--bar-height) / 2); /*moves the axis slightly down */
+  }
+
+  .burger__menu input:checked {
+    /* removes the middle line */
+    opacity: 0;
+    width: 0;
+  }
+
+  .navbar.show {
+    transition:
+      opacity 1000ms ease-in-out,
+      transform 400ms ease-in-out;
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
