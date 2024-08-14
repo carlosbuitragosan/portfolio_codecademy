@@ -1,23 +1,19 @@
 // TITLE ANIMATION
 $(document).ready(() => {
+    // TITLE ANIMATION
     $('.logo').textillate({
         in: {
-            effect: 'fadeInDownBig',
-            delay: 20,
+            effect: 'bounceInDown',
+            delay: 50,
         },
     });
-});
 
-// TOGGLE DROPDOWN MENU IN MOBILE
-document.addEventListener('DOMContentLoaded', () => {
-    const burgerMenu = document.querySelector('.burger__menu input');
-    const navbar = document.querySelector('.navbar');
-
-    burgerMenu.addEventListener('change', () => {
-        if (burgerMenu.checked) {
-            navbar.classList.add('show');
+    // TOGGLE DROPDOWN MENU IN MOBILE
+    $('.burger__menu input').on('change', function () {
+        if ($(this).is(':checked')) {
+            $('.navbar').removeClass('hide').addClass('show');
         } else {
-            navbar.classList.remove('show');
+            $('.navbar').removeClass('show').addClass('hide');
         }
     });
 });

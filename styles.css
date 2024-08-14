@@ -71,20 +71,7 @@ img {
     flex-direction: column;
   }
 
-  .navbar {
-    position: absolute;
-    top: 80px;
-    transform: translateY(
-      -150%
-    ); /* Initially hide the menu above the viewport */
-    opacity: 0;
-    transition:
-      opacity 400ms ease-in-out,
-      transform 800ms ease-in-out;
-    padding-bottom: 1rem;
-    background: var(--orange);
-  }
-
+  /* BURGER MENU ICON */
   .burger__menu {
     --x-width: calc(
       var(--burger-height) * 1.41421356237
@@ -144,11 +131,56 @@ img {
     width: 0;
   }
 
+  /* NAVBAR TRANSITION FROM HIDDEN TO VISIBLE */
+  .navbar {
+    position: absolute;
+    top: 80px;
+    transform: translateY(-150px);
+    opacity: 0;
+    /* transition:
+      opacity 0.4s ease-in-out,
+      transform 0.4s ease-in-out; */
+  }
+
+  /* Keyframes for sliding down with opacity change after transform */
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-150px);
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(-75px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Keyframes for sliding up with opacity change first */
+  @keyframes slideUp {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(-150px);
+      opacity: 0;
+    }
+  }
+
+  /* Apply animation for the show state */
   .navbar.show {
-    transition:
-      opacity 1000ms ease-in-out,
-      transform 400ms ease-in-out;
-    opacity: 1;
-    transform: translateY(0);
+    animation: slideDown 0.4s forwards;
+  }
+
+  /* Apply animation for the hide state */
+  .navbar.hide {
+    animation: slideUp 0.5s forwards;
   }
 }
