@@ -1,6 +1,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
+  background-color: #f6e5df;
 }
 
 img {
@@ -14,10 +15,11 @@ img {
 }
 
 :root {
+  --orange: #ee9b00;
   --grey: black;
-  --bar-width: 40px;
-  --bar-height: 4px;
-  --bar-gap: 3px;
+  --bar-width: 30px;
+  --bar-height: 2px;
+  --bar-gap: 5px;
   --animation: 200ms ease-in-out;
   --burger-height: calc(var(--bar-height) * 3 + var(--bar-gap) * 2);
 }
@@ -29,10 +31,14 @@ img {
 }
 
 .header {
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
+  color: var(--orange);
+  background-color: #fff0;
+  width: 100%;
 }
 .header a {
   text-decoration: none;
@@ -61,14 +67,70 @@ img {
   font-weight: 900;
 }
 
-/* BURGER MENU */
-@media only screen and (max-width: 500px) {
+/* HERO SECTION */
+
+.hero {
+  background: black url('./imgs/london_desktop.webp') no-repeat center / cover;
+  padding: 12rem 5rem;
+  text-shadow:
+    1px 1px 1px #000,
+    -1px -1px 1px #000,
+    1px -1px 1px #000,
+    -1px 1px 1px #000;
+}
+
+.hero__text_container {
+  color: var(--orange);
+}
+
+.hero__title {
+  font-size: 5rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.line-break {
+  display: block;
+}
+
+.hero__description {
+  display: inline;
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin: 0;
+  position: relative;
+  top: -0.8em;
+}
+
+@media only screen and (max-width: 750px) {
+  .header {
+    padding: 2rem 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
   .header {
     flex-direction: column;
   }
 
+  .logo__container {
+    align-self: flex-start;
+  }
   .menu {
     flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero {
+    padding: 18rem 1rem 5rem 2rem;
+  }
+
+  .hero__title {
+    font-size: 4rem;
+  }
+
+  .hero__description {
+    font-size: 2rem;
   }
 
   /* BURGER MENU ICON */
@@ -78,7 +140,7 @@ img {
     ); /* calculates the length of the lines when they become a cross (multiply by the square root of 2) */
     position: absolute;
     top: 32px;
-    right: 30px;
+    right: 10px;
     display: flex;
     flex-direction: column;
     gap: var(--bar-gap);
@@ -94,7 +156,7 @@ img {
     width: var(--bar-width);
     height: var(--bar-height);
     border-radius: 18px;
-    background: var(--grey);
+    background: var(--orange);
     transition:
       opacity var(--animation),
       /* transition for opacity, width, length and rotate */ width
@@ -134,7 +196,7 @@ img {
   /* NAVBAR TRANSITION FROM HIDDEN TO VISIBLE */
   .navbar {
     position: absolute;
-    top: 80px;
+    top: 110px;
     transform: translateY(-150px);
     opacity: 0;
     /* transition:

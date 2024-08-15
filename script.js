@@ -1,9 +1,7 @@
-// TITLE ANIMATION
 $(document).ready(() => {
-    // TITLE ANIMATION
     $('.logo').textillate({
         in: {
-            effect: 'bounceInDown',
+            effect: 'fadeInDownBig',
             delay: 50,
         },
     });
@@ -15,5 +13,32 @@ $(document).ready(() => {
         } else {
             $('.navbar').removeClass('show').addClass('hide');
         }
+    });
+
+    // HEADER ANIMATION
+    let lastScrollTop = 0;
+    let headerVisible = true;
+
+    $(window).scroll(function () {
+        const currentScroll = $(this).scrollTop();
+
+        if (currentScroll > lastScrollTop && currentScroll > 100) {
+            if (headerVisible) {
+                $('.header').slideUp('fast');
+                $('.logo').fadeOut('fast');
+                headerVisible = false;
+            }
+        } else if (currentScroll <= 100) {
+            if (!headerVisible) {
+                $('.header').slideDown('fast', () => {
+                    $('.logo').css('display', 'block');
+                    $('.logo').textillate('in');
+                });
+
+                headerVisible = true;
+            }
+        }
+
+        lastScrollTop = currentScroll;
     });
 });
