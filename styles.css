@@ -291,3 +291,23 @@ img {
     font-size: 1.5rem;
   }
 }
+
+/* LANDSCAPE MODE */
+@media only screen and (orientation: landscape) {
+  .hero {
+    padding: 8rem 0 5rem 3rem;
+  }
+
+  .hero__title {
+    font-size: 3rem;
+  }
+
+  .hero__description {
+    font-size: 1.5rem;
+  }
+
+  .navbar {
+    top: 100px;
+    right: 80px;
+  }
+}
