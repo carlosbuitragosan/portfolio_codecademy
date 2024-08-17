@@ -1,5 +1,7 @@
 $(document).ready(() => {
-    $('.logo__title').textillate({
+    const $logoTitle = $('.logo__title');
+
+    $logoTitle.textillate({
         in: {
             effect: 'fadeInDownBig',
             delay: 50,
@@ -25,14 +27,14 @@ $(document).ready(() => {
         if (currentScroll > lastScrollTop && currentScroll > 100) {
             if (headerVisible) {
                 $('.header').slideUp('fast');
-                $('.logo__title').fadeOut('fast');
+                $logoTitle.fadeOut('fast');
                 headerVisible = false;
             }
         } else if (currentScroll <= 100) {
             if (!headerVisible) {
                 $('.header').slideDown('fast', () => {
-                    $('.logo__title').css('display', 'block');
-                    $('.logo__title').textillate('in');
+                    $logoTitle.css('display', 'block');
+                    $logoTitle.textillate('in');
                 });
 
                 headerVisible = true;
