@@ -65,9 +65,11 @@ img {
   text-align: center;
 }
 
-.logo {
+.logo__title {
   font-size: 1.8rem;
   font-weight: 900;
+  visibility: hidden;
+  margin: 0;
 }
 
 /* HERO SECTION */
@@ -117,6 +119,30 @@ img {
   background: var(--white);
 }
 
+/* LANDSCAPE MODE */
+@media only screen and (orientation: landscape) and (max-height: 415px) {
+  .hero {
+    padding: 8rem 0 5rem 3rem;
+  }
+
+  .hero__title {
+    font-size: 3rem;
+  }
+
+  .hero__description {
+    font-size: 1.5rem;
+  }
+
+  .navbar {
+    top: 100px;
+    right: 80px;
+  }
+
+  .main {
+    margin-top: 25rem;
+  }
+}
+
 @media only screen and (max-width: 750px) {
   .header {
     padding: 2rem 0.5rem;
@@ -135,6 +161,7 @@ img {
   .logo__container {
     align-self: flex-start;
   }
+
   .menu {
     flex-direction: column;
     gap: 1rem;
@@ -218,12 +245,9 @@ img {
     top: 110px;
     transform: translateY(-150px);
     opacity: 0;
-    /* transition:
-      opacity 0.4s ease-in-out,
-      transform 0.4s ease-in-out; */
   }
 
-  /* Keyframes for sliding down with opacity change after transform */
+  /* Keyframes for sliding down header with opacity change after transform */
   @keyframes slideDown {
     0% {
       transform: translateY(-150px);
@@ -239,7 +263,7 @@ img {
     }
   }
 
-  /* Keyframes for sliding up with opacity change first */
+  /* Keyframes for sliding up header with opacity change first */
   @keyframes slideUp {
     0% {
       transform: translateY(0);
@@ -255,12 +279,12 @@ img {
     }
   }
 
-  /* Apply animation for the show state */
+  /* Apply header animation for the show state */
   .navbar.show {
     animation: slideDown 0.4s forwards;
   }
 
-  /* Apply animation for the hide state */
+  /* Apply header animation for the hide state */
   .navbar.hide {
     animation: slideUp 0.5s forwards;
   }
@@ -289,25 +313,5 @@ img {
 
   .hero__description {
     font-size: 1.5rem;
-  }
-}
-
-/* LANDSCAPE MODE */
-@media only screen and (orientation: landscape) {
-  .hero {
-    padding: 8rem 0 5rem 3rem;
-  }
-
-  .hero__title {
-    font-size: 3rem;
-  }
-
-  .hero__description {
-    font-size: 1.5rem;
-  }
-
-  .navbar {
-    top: 100px;
-    right: 80px;
   }
 }
