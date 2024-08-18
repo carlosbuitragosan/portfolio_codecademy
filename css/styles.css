@@ -84,7 +84,7 @@ img {
   top: 0;
   width: 100%;
   z-index: 1;
-  background: #000 url('./imgs/london_desktop.webp') no-repeat center / cover;
+  background: #000 url('../imgs/london_desktop.webp') no-repeat center / cover;
   padding: 23rem 0 2rem 5rem;
 }
 
