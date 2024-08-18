@@ -1,7 +1,7 @@
 :root {
   --orange: #ee9b00;
   --grey: black;
-  --white: #f6e5df;
+  --white: #fff;
   --bar-width: 30px;
   --bar-height: 2px;
   --bar-gap: 5px;
@@ -51,6 +51,7 @@ img {
 .navbar {
   flex-basis: 50%;
 }
+
 .menu {
   display: flex;
   justify-content: flex-end;
@@ -83,36 +84,41 @@ img {
   top: 0;
   width: 100%;
   z-index: 1;
-  background: black url('./imgs/london_desktop.webp') no-repeat center / cover;
-  padding: 12rem 5rem;
-  text-shadow:
-    1px 1px 1px #000,
-    -1px -1px 1px #000,
-    1px -1px 1px #000,
-    -1px 1px 1px #000;
+  background: #000 url('./imgs/london_desktop.webp') no-repeat center / cover;
+  padding: 23rem 0 2rem 2rem;
+  /* text-shadow:
+    1px 1px 1px #353232,
+    -1px -1px 1px #353232,
+    1px -1px 1px #353232,
+    -1px 1px 1px #353232; */
 }
 
 .hero__text_container {
   color: var(--orange);
+  overflow: hidden;
 }
 
 .hero__title {
+  margin: 0;
+  visibility: hidden;
+}
+.hero__web,
+.hero__developer {
   font-size: 5rem;
-  font-weight: 900;
+  font-weight: 700;
   margin: 0;
 }
 
-.line-break {
+.hero__developer {
   display: block;
 }
 
 .hero__description {
   display: inline;
   font-size: 2.5rem;
-  font-weight: 400;
+  font-weight: 100;
   margin: 0;
-  position: relative;
-  top: -0.8em;
+  /* line-height: 2rem; */
 }
 
 /* MAIN SECTION  */
@@ -124,12 +130,13 @@ img {
 }
 
 /* LANDSCAPE MODE */
-@media only screen and (orientation: landscape) and (max-height: 415px) {
+@media only screen and (orientation: landscape) and (max-height: 430px) {
   .hero {
-    padding: 8rem 0 5rem 3rem;
+    padding: 14rem 0 1rem 1rem;
   }
 
-  .hero__title {
+  .hero__web,
+  .hero__developer {
     font-size: 3rem;
   }
 
@@ -172,10 +179,11 @@ img {
   }
 
   .hero {
-    padding: 18rem 1rem 5rem 2rem;
+    padding: 20rem 1rem 1rem 1rem;
   }
 
-  .hero__title {
+  .hero__web,
+  .hero__developer {
     font-size: 4rem;
   }
 
@@ -216,6 +224,8 @@ img {
     transform-origin: left; /* the axis where the lines rotate are now on the left */
   }
 
+  .burger__menu:hover {
+  }
   .burger__menu input {
     appearance: none; /* removes checkbox appareance and takes the above settings (widht, length) */
     pointer-events: none; /* disable click on the checkbox so that the click is handled by the b_menu */
@@ -294,7 +304,7 @@ img {
   }
 
   .main {
-    margin-top: 38rem;
+    margin-top: 36rem;
   }
 }
 
@@ -311,7 +321,8 @@ img {
     padding: 17rem 0 10rem 1rem;
   }
 
-  .hero__title {
+  .hero__web,
+  .hero__developer {
     font-size: 3.5rem;
   }
 

@@ -1,11 +1,25 @@
 $(document).ready(() => {
     const $logoTitle = $('.logo__title');
-
+    // LOGO ANIMATION
     $logoTitle.textillate({
         in: {
             effect: 'fadeInDownBig',
-            delay: 50,
+            delay: 18,
         },
+        onStart() {
+            console.log('Animation started');
+        },
+    });
+
+    // HERO TITLE ANIMATION
+    $('.hero__text').each(function () {
+        $(this).textillate({
+            in: {
+                effect: 'fadeInUpBig',
+                sync: true,
+                delay: 800,
+            },
+        });
     });
 
     // TOGGLE DROPDOWN MENU IN MOBILE
