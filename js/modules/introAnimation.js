@@ -1,24 +1,20 @@
 export function introAnimation() {
-    function handleIntersection(entries) {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                $(entry.target)
-                    .find('span')
-                    .each(function () {
-                        $(this).textillate({
-                            in: {
-                                effect: 'fadeInUp',
-                                sync: true,
-                            },
-                        });
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    $(entry.target).textillate({
+                        in: {
+                            effect: 'fadeInUp',
+                            sync: true,
+                        },
                     });
-                observer.unobserve(entry.target);
-            }
-        });
-    }
-    const observer = new IntersectionObserver(handleIntersection);
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.3 }
+    );
 
-    $('.intro').each(function () {
-        observer.observe(this);
-    });
+    observer.observe($('.intro__text')[0]);
 }

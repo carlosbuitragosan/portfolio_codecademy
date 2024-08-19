@@ -1,6 +1,7 @@
 :root {
   --orange: #ee9b00;
-  --grey: black;
+  --black: black;
+  --grey: #2e3129;
   --white: #fff;
   --bar-width: 30px;
   --bar-height: 2px;
@@ -13,6 +14,7 @@ body {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
   background-color: var(--white);
+  color: var(--grey);
 }
 
 img {
@@ -84,7 +86,8 @@ img {
   top: 0;
   width: 100%;
   z-index: 1;
-  background: #000 url('../imgs/london_desktop.webp') no-repeat center / cover;
+  background: var(--black) url('../imgs/london_desktop.webp') no-repeat center /
+    cover;
   padding: 23rem 0 2rem 5rem;
 }
 
@@ -133,17 +136,35 @@ img {
   background: var(--white);
 }
 
-/* INTRODUCTION */
-.intro {
+/* INTRODUCTION SECTION*/
+.intro__text {
   padding: 2rem 0 12rem 5rem;
   margin: 0;
   font-weight: 300;
+  font-size: 26px;
   visibility: hidden;
+  width: 50%;
 }
 
-.intro span {
-  display: block;
-  font-size: 26px;
+/* SKILLS SECTION */
+.skills__section {
+  padding: 0 2rem;
+}
+.skills__main_title {
+  font-size: 3rem;
+}
+.skills__title_container {
+  display: flex;
+}
+
+.skills__categories_title {
+  margin: 0;
+}
+
+.skills__list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 /* LANDSCAPE MODE */
 @media only screen and (orientation: landscape) and (max-height: 430px) {
@@ -168,10 +189,6 @@ img {
   .main {
     margin-top: 25rem;
   }
-
-  .intro {
-    padding-left: 1rem;
-  }
 }
 
 @media only screen and (max-width: 750px) {
@@ -180,12 +197,13 @@ img {
   }
 
   .hero {
-    background: black url('./imgs/london_mobile.webp') no-repeat right / cover;
+    background: black url('../imgs/london_mobile.webp') no-repeat right / cover;
   }
 
-  .intro {
+  .intro__text {
     padding-left: 1rem;
     padding-top: 1rem;
+    width: 70%;
   }
 }
 
@@ -328,6 +346,10 @@ img {
 
   .main {
     margin-top: 35rem;
+  }
+
+  .intro__text {
+    width: 95%;
   }
 }
 

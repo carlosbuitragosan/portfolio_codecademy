@@ -6,6 +6,10 @@
     <title>Carlos Buitrago | Web Developer</title>
     <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,7 +27,8 @@
     <header class="header" role="banner" aria-label="Site Header">
       <div class="logo__container">
         <a class="logo" href="#" aria-label="Carlos Buitrago - Home"
-          ><h1 class="logo__title">CARLOS BUITRAGO</h1></a>
+          ><h1 class="logo__title">CARLOS BUITRAGO</h1></a
+        >
       </div>
 
       <label class="burger__menu">
@@ -41,22 +46,105 @@
 
     <div class="hero" role="banner">
       <div class="hero__text_container">
-        <h1 class="hero__title" >
+        <h1 class="hero__title">
           <span class="screen-reader">web developer based in london</span>
           <span class="hero__web hero__text" aria-hidden="true">Web</span>
-          <span class="hero__developer hero__text" aria-hidden="true">Developer</span>
-          <span class="hero__description hero__text" aria-hidden="true">Based in London</span>
+          <span class="hero__developer hero__text" aria-hidden="true"
+            >Developer</span
+          >
+          <span class="hero__description hero__text" aria-hidden="true"
+            >Based in London</span
+          >
         </h1>
       </div>
     </div>
 
     <main class="main">
-      <span class="screen-reader">I am a passionate Web Developer eager to grow my skills and contribute to meaningful projects. I thrive in collaborative environments and am excited to be part of a dynamic development team.</span>
-      <p class="intro">
-        <span aria-hidden="true">I am a passionate Web Developer</span>
-        <span aria-hidden="true">eager to grow my skills and contribute</span> 
-        <span aria-hidden="true">to meaningful projects.</span>
-      </p>
+      <section class="intro__wrapper">
+        <span class="screen-reader"
+          >I am a passionate Web Developer eager to grow my skills and
+          contribute to meaningful projects. I thrive in collaborative
+          environments and am excited to be part of a dynamic development
+          team.</span
+        >
+        <p class="intro__text" aria-hidden="true">I am a passionate Web Developer eager to grow my skills and contribute to meaningful projects. I thrive in collaborative environments and am excited to be part of a dynamic development team.</p>
+      </section>
+
+      <section class="skills__section">
+        <h2 class="skills__main_title">Skills</h2>
+
+        <div class="skilss__category">
+          <div class="skills__title_container">
+            <i class="fa-solid fa-laptop-code"></i>
+            <h3 class="skills__categories_title">Front-End</h3>
+          </div>
+
+          <ul class="skills__list">
+            <li class="skills_item">HTML5</li>
+            <li class="skills_item">CSS3</li>
+            <li class="skills_item">JavaScript</li>
+            <li class="skills_item">React</li>
+            <li class="skills_item">Redux</li>
+          </ul>
+        </div>
+
+        <div class="skilss__category">
+          <div class="skills__title_container">
+            <i class="fa-solid fa-database"></i>
+            <h3 class="skills__categories_title">Back-End</h3>
+          </div>
+
+          <ul class="skills__list">
+            <li class="skills_item">Node.js</li>
+            <li class="skills_item">Express.js</li>
+            <li class="skills_item"></li>
+            <li class="skills_item"></li>
+            <li class="skills_item"></li>
+          </ul>
+        </div>
+
+        <div class="skilss__category">
+          <div class="skills__title_container">
+            <i class="fa-solid fa-server"></i>
+            <h3 class="skills__categories_title">Databases</h3>
+          </div>
+
+          <ul class="skills__list">
+            <li class="skills_item">PostgresSQL</li>
+            <li class="skills_item">NoSQL</li>
+            <li class="skills_item">MySQL</li>
+          </ul>
+        </div>
+
+        <div class="skilss__category">
+          <div class="skills__title_container">
+            <i class="fa-solid fa-gear"></i>
+            <h3 class="skills__categories_title">Tools & Platforms</h3>
+          </div>
+
+          <ul class="skills__list">
+            <li class="skills_item">Git & GitHub</li>
+            <li class="skills_item">Linux</li>
+            <li class="skills_item">TDD (Jest & Mocha)</li>
+            <li class="skills_item">Swagger</li>
+            <li class="skills_item">OpenAPI</li>
+            <li class="skills_item">Render</li>
+          </ul>
+        </div>
+
+        <div class="skilss__category">
+
+          <div class="skills__title_container">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            <h3 class="skills__categories_title">DevOps</h3>
+          </div>
+
+          <ul class="skills__list">
+            <li class="skills_item">AWS</li>
+            <li class="skills_item">Terraform</li>
+          </ul>
+        </div>
+      </section>
     </main>
     <footer class="footer"></footer>
   </body>
