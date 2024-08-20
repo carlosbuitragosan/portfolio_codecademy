@@ -3,6 +3,7 @@ import { heroAnimation } from './modules/heroAnimation.js';
 import { burgerMenuToggle } from './modules/burgerMenuToggle.js';
 import { headerAnimation } from './modules/headerAnimation.js';
 import { introAnimation } from './modules/introAnimation.js';
+import { skillsAnimation } from './modules/skillsAnimation.js';
 
 $(document).ready(() => {
     logoAnimation();
@@ -10,4 +11,5 @@ $(document).ready(() => {
     burgerMenuToggle();
     headerAnimation();
     introAnimation();
+    skillsAnimation();
 });
