@@ -156,40 +156,11 @@ img {
 
 .skills__container {
   display: grid;
-  grid-template-columns: repeat(5, minmax(150px, 200px));
-  grid-template-rows: repeat(16, 30px);
+  grid-template-columns: repeat(5, minmax(160px, 1fr));
+  grid-template-rows: repeat(20, 25px);
+  gap: 1vw;
   justify-items: center;
   position: relative;
-}
-
-.skills__front-end {
-  grid-column-start: 1;
-  grid-row-start: 1;
-  grid-row-end: 8;
-}
-
-.skills__back-end {
-  grid-column-start: 2;
-  grid-row-start: 3;
-  grid-row-end: 10;
-}
-
-.skills__databases {
-  grid-column-start: 3;
-  grid-row-start: 5;
-  grid-row-end: 12;
-}
-
-.skills__tools {
-  grid-column-start: 4;
-  grid-row-start: 7;
-  grid-row-end: 14;
-}
-
-.skills__devops {
-  grid-column-start: 5;
-  grid-row-start: 9;
-  grid-row-end: 16;
 }
 
 .skills__category {
@@ -199,7 +170,32 @@ img {
   border: 1px solid black;
   padding: 0.5rem 0.8rem;
   border-radius: 4px;
-  transition: transform 1.3s ease-out;
+  transition: transform 0.6s ease-out;
+}
+
+.skills__front-end {
+  grid-column: 1;
+  grid-row: 1 / span 7;
+}
+
+.skills__back-end {
+  grid-column: 2;
+  grid-row: 4 / span 7;
+}
+
+.skills__databases {
+  grid-column: 3;
+  grid-row: 7 / span 7;
+}
+
+.skills__tools {
+  grid-column: 4;
+  grid-row: 10 / span 7;
+}
+
+.skills__devops {
+  grid-column: 5;
+  grid-row: 13 / span 7;
 }
 
 .skills__title_container {
@@ -221,6 +217,56 @@ img {
   padding: 0;
   margin: 0;
 }
+
+@media only screen and (min-width: 1000px) {
+  .skills__section {
+    padding: 0 5rem 2rem 5rem;
+  }
+}
+
+@media only screen and (max-width: 870px) {
+  .skills__container {
+    grid-template-columns: repeat(4, minmax(160px, 1fr));
+  }
+
+  .skills__devops {
+    grid-column: 2;
+    grid-row: 12 / span 7;
+  }
+}
+
+@media only screen and (max-width: 710px) {
+  .skills__container {
+    grid-template-columns: repeat(3, minmax(160px, 1fr));
+  }
+
+  .skills__devops {
+    grid-column: 1;
+    grid-row: 9 / span 7;
+  }
+
+  .skills__tools {
+    grid-column: 2;
+    grid-row: 12 / span 7;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .skills__section {
+    padding: 0 1rem 2rem 1rem;
+  }
+
+  .skills__container {
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+    grid-template-rows: repeat(24, 25px);
+  }
+
+  .skills__databases {
+    grid-column: 1;
+    grid-row: 17 / span 7;
+  }
+}
+
 /* LANDSCAPE MODE */
 @media only screen and (orientation: landscape) and (max-height: 430px) {
   .hero {

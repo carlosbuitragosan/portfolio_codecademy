@@ -31,7 +31,7 @@ export function skillsAnimation() {
                 }
             });
         },
-        { threshold: 1 }
+        { threshold: 0.6 }
     );
     observer.observe($('.skills__container')[0]);
 }

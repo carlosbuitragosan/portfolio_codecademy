@@ -13,7 +13,7 @@ export function introAnimation() {
                 }
             });
         },
-        { threshold: 0.3 }
+        { threshold: 0.5 }
     );
 
     observer.observe($('.intro__text')[0]);
