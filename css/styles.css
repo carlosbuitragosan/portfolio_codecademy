@@ -314,7 +314,7 @@ img {
 /* LANDSCAPE MODE */
 @media only screen and (orientation: landscape) and (max-height: 430px) {
   .hero {
-    padding: 14rem 0 1rem 1rem;
+    padding: 12rem 0 1rem 1rem;
   }
 
   .hero__web,
@@ -332,7 +332,7 @@ img {
   }
 
   .main {
-    margin-top: 25rem;
+    margin-top: 24rem;
   }
 }
 
