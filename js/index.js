@@ -7,6 +7,7 @@ import {
     skillsAnimation,
     skillsHoverEffect,
 } from './modules/skillsAnimation.js';
+import { footerReveal } from './modules/footerReveal.js';
 
 $(document).ready(() => {
     logoAnimation();
@@ -16,4 +17,5 @@ $(document).ready(() => {
     introAnimation();
     skillsAnimation();
     skillsHoverEffect();
+    footerReveal();
 });

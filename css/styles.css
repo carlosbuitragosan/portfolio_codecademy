@@ -134,6 +134,7 @@ img {
   margin-top: 43rem;
   z-index: 3;
   background: var(--white);
+  transition: margin-bottom 0.3s ease;
 }
 
 /* INTRODUCTION SECTION*/
@@ -315,6 +316,19 @@ img {
     grid-column: 1;
     grid-row: 17 / span 7;
   }
+}
+
+/* FOOTER */
+#sentinel {
+  height: 1px;
+}
+.footer {
+  background: #43bccd;
+  padding: 2rem;
+  z-index: -1;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }
 
 /* LANDSCAPE MODE */
