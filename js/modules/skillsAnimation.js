@@ -35,3 +35,21 @@ export function skillsAnimation() {
     );
     observer.observe($('.skills__container')[0]);
 }
+
+export function skillsHoverEffect() {
+    const $cards = $('.skills__category');
+
+    $cards.on('mouseenter', function () {
+        const $hoveredCard = $(this);
+        $cards.each(function () {
+            const $card = $(this);
+            if (!$card.is($hoveredCard)) {
+                $card.addClass('skills__category_greyed');
+            }
+        });
+    });
+
+    $cards.on('mouseleave', () => {
+        $cards.removeClass('skills__category_greyed');
+    });
+}
