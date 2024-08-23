@@ -131,13 +131,14 @@ img {
 /* MAIN SECTION  */
 .main {
   position: relative;
-  margin-top: 43rem;
+  /* margin-top: 38rem; */
   z-index: 3;
   background: var(--white);
   transition: margin-bottom 0.3s ease;
 }
 
 /* INTRODUCTION SECTION*/
+
 .intro__text {
   padding: 2rem 0 12rem 5rem;
   margin: 0;
@@ -351,9 +352,9 @@ img {
     right: 80px;
   }
 
-  .main {
-    margin-top: 24rem;
-  }
+  /* .main {
+    margin-top: 22rem;
+  } */
 }
 
 @media only screen and (max-width: 750px) {
@@ -509,9 +510,9 @@ img {
     animation: slideUp 0.5s forwards;
   }
 
-  .main {
-    margin-top: 35rem;
-  }
+  /* .main {
+    margin-top: 32rem;
+  } */
 
   .intro__text {
     width: 95%;

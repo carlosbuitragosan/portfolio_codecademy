@@ -8,8 +8,10 @@ import {
     skillsHoverEffect,
 } from './modules/skillsAnimation.js';
 import { footerReveal } from './modules/footerReveal.js';
+import { mainContentMargin } from './modules/mainMargin.js';
 
 $(document).ready(() => {
+    mainContentMargin();
     logoAnimation();
     heroAnimation();
     burgerMenuToggle();
