@@ -85,15 +85,18 @@ img {
   position: fixed;
   top: 0;
   width: 100%;
+  height: 100vh;
   z-index: 1;
   background: var(--black) url('../imgs/london_desktop.webp') no-repeat center /
     cover;
-  padding: 23rem 0 2rem 5rem;
 }
 
 .hero__text_container {
   color: var(--orange);
   overflow: hidden;
+  position: absolute;
+  bottom: 5vh;
+  margin-left: 5rem;
 }
 
 .hero__title {
@@ -125,7 +128,6 @@ img {
   font-size: 2.5rem;
   font-weight: 100;
   margin: 0;
-  /* line-height: 2rem; */
 }
 
 /* MAIN SECTION  */
@@ -133,7 +135,7 @@ img {
   position: relative;
   z-index: 4;
   background: var(--white);
-  /* transition: margin-bottom 0.3s ease; */
+  margin-top: 100vh;
 }
 
 /* INTRODUCTION SECTION*/
@@ -333,8 +335,8 @@ img {
 
 /* LANDSCAPE MODE */
 @media only screen and (orientation: landscape) and (max-height: 430px) {
-  .hero {
-    padding: 12rem 0 1rem 1rem;
+  .hero__text_container {
+    margin-left: 2rem;
   }
 
   .hero__web,
@@ -382,8 +384,8 @@ img {
     gap: 1rem;
   }
 
-  .hero {
-    padding: 20rem 1rem 1rem 1rem;
+  .hero__text_container {
+    margin-left: 1rem;
   }
 
   .hero__web,
@@ -507,28 +509,5 @@ img {
 
   .intro__text {
     width: 95%;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  .logo__container {
-    margin-right: 3rem;
-  }
-
-  .navbar {
-    top: 130px;
-  }
-
-  .hero {
-    padding: 17rem 0 10rem 1rem;
-  }
-
-  .hero__web,
-  .hero__developer {
-    font-size: 3.5rem;
-  }
-
-  .hero__description {
-    font-size: 1.5rem;
   }
 }
