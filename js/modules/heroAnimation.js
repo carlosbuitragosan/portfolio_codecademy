@@ -13,26 +13,33 @@ export function heroAnimation() {
 
     // RIPPLES ANIMATION
     const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    const resolution = isMobile ? 128 : 512;
+    const resolution = isMobile ? 256 : 512;
 
     $hero.ripples({
         resolution,
         dropRadius: 20,
-        perturbance: 0.01,
+        perturbance: 0.003, // amount of refraction
         interactive: false,
     });
 
-    const $heroOffset = $hero.offset();
     const heroWidth = $hero.width();
     const heroHeight = $hero.height();
-    const x = $heroOffset.left + heroWidth / 2;
-    const y = $heroOffset.top + heroHeight / 2;
 
-    function triggerRipple(width, height) {
-        $hero.ripples('drop', width, height, 5, 0.2);
+    function triggerRipple(x, y) {
+        $hero.ripples('drop', x, y, 20, 0.1); // 1st number is size of the dropand  2nd is amplitude of the ripple
     }
 
+    function triggerRain() {
+        // Random position within the $hero element
+        const randomX = Math.random() * heroWidth;
+        const randomY = Math.random() * heroHeight;
+        triggerRipple(randomX, randomY);
+    }
+
+    // Repeat with a random interval to create a natural rain effect
+    const rainInterval = setInterval(triggerRain, 1000);
+
     setTimeout(() => {
-        triggerRipple(x, y);
-    }, 500);
+        clearInterval(rainInterval);
+    }, 20000); // 5000ms = 5 seconds
 }
