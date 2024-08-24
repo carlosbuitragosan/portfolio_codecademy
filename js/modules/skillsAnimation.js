@@ -1,17 +1,25 @@
 export function skillsAnimation() {
     const $container = $('.skills__container');
     const $gridItems = $('.skills__category');
+    const $skillsTitleHeight = $('.skills__main_title').outerHeight();
 
     $gridItems.each(function () {
         const $item = $(this);
-        const containerBottom =
-            $container.offset().top + $container.outerHeight();
-        const itemOffsetTop = $item.offset().top + $item.outerHeight();
-        const translateY = containerBottom - itemOffsetTop;
+        const containerTop = $container.offset().top + $skillsTitleHeight;
+        const itemTop = $item.offset().top;
+        const translateY = containerTop - itemTop;
 
         $item.css({
             transform: `translateY(${translateY}px)`,
         });
+        // const containerBottom =
+        //     $container.offset().top + $container.outerHeight();
+        // const itemOffsetTop = $item.offset().top + $item.outerHeight();
+        // const translateY = containerBottom - itemOffsetTop;
+
+        // $item.css({
+        //     transform: `translateY(${translateY}px)`,
+        // });
     });
 
     function animateSkills() {
