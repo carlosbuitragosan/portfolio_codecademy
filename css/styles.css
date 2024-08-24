@@ -131,10 +131,9 @@ img {
 /* MAIN SECTION  */
 .main {
   position: relative;
-  /* margin-top: 38rem; */
-  z-index: 3;
+  z-index: 4;
   background: var(--white);
-  transition: margin-bottom 0.3s ease;
+  /* transition: margin-bottom 0.3s ease; */
 }
 
 /* INTRODUCTION SECTION*/
@@ -320,8 +319,8 @@ img {
 }
 
 /* FOOTER */
-#sentinel {
-  height: 1px;
+.sentinel {
+  height: 10px;
 }
 .footer {
   background: #43bccd;
@@ -351,10 +350,6 @@ img {
     top: 100px;
     right: 80px;
   }
-
-  /* .main {
-    margin-top: 22rem;
-  } */
 }
 
 @media only screen and (max-width: 750px) {
@@ -509,10 +504,6 @@ img {
   .navbar.hide {
     animation: slideUp 0.5s forwards;
   }
-
-  /* .main {
-    margin-top: 32rem;
-  } */
 
   .intro__text {
     width: 95%;

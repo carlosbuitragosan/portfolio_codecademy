@@ -1,22 +1,31 @@
 export function footerReveal() {
-    const footerHeight = 206;
+    const $sentinel = $('.sentinel');
+    const $main = $('.main');
+    const $footer = $('.footer');
 
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    document.querySelector('.main').style.marginBottom =
-                        `${footerHeight}px`;
-                } else {
-                    document.querySelector('.main').style.marginBottom = '0';
-                }
-                observer.unobserve(entry.target);
-            });
-        },
-        {
-            threshold: 0,
-        }
-    );
+    function updateMainBottomMargin() {
+        const $footerHeight = $footer.outerHeight();
+        $main.css('margin-bottom', `${$footerHeight}px`);
+    }
 
-    observer.observe(document.getElementById('sentinel'));
+    function handleIntersection(entries) {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                updateMainBottomMargin();
+                $footer.css('z-index', '3');
+            } else {
+                $footer.css('z-index', '-1');
+            }
+        });
+    }
+
+    const observer = new IntersectionObserver(handleIntersection);
+
+    observer.observe($sentinel[0]);
+
+    $(window).resize(() => {
+        updateMainBottomMargin();
+    });
+
+    updateMainBottomMargin();
 }
