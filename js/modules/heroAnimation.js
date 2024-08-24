@@ -12,10 +12,13 @@ export function heroAnimation() {
     });
 
     // RIPPLES ANIMATION
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    const resolution = isMobile ? 128 : 512;
+
     $hero.ripples({
-        resolution: 128,
+        resolution,
         dropRadius: 20,
-        perturbance: 0.004,
+        perturbance: 0.01,
         interactive: false,
     });
 
