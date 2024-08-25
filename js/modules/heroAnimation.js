@@ -19,7 +19,7 @@ export function heroAnimation() {
     $hero.ripples({
         resolution,
         dropRadius: 20,
-        perturbance: 0.003, // amount of refraction
+        perturbance: 0.001, // amount of refraction
         interactive: false,
     });
 
@@ -27,7 +27,7 @@ export function heroAnimation() {
     const heroHeight = $hero.height();
 
     function triggerRipple(x, y) {
-        $hero.ripples('drop', x, y, 20, 0.1); // 1st number is size of the drop size and  2nd is amplitude of the ripple
+        $hero.ripples('drop', x, y, 30, 0.08); // 1st number is size of the drop size and  2nd is amplitude of the ripple
     }
 
     function triggerRain() {
@@ -37,13 +37,20 @@ export function heroAnimation() {
         triggerRipple(randomX, randomY);
     }
 
-    // trigegerRain every 1s
-    let rainInterval;
+    let rainInterval = 1000;
+    let intervalId;
+    function startRain() {
+        intervalId = setInterval(() => {
+            triggerRain();
+            rainInterval = Math.max(rainInterval - 100, 200);
+            clearInterval(intervalId);
+            startRain();
+        }, rainInterval);
+    }
+
+    setTimeout(startRain, 3000);
+
     setTimeout(() => {
-        rainInterval = setInterval(triggerRain, 1000);
-    }, 3000);
-    // stop triggerRain after Xs
-    setTimeout(() => {
-        clearInterval(rainInterval);
+        clearInterval(intervalId);
     }, 12000);
 }

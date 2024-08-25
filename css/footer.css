@@ -1,0 +1,11 @@
+.sentinel {
+  height: 10px;
+}
+.footer {
+  background: #43bccd;
+  padding: 2rem;
+  z-index: -1;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
