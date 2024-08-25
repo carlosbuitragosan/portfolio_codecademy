@@ -12,8 +12,8 @@
   color: var(--orange);
   overflow: hidden;
   position: absolute;
-  bottom: 5vh;
-  margin-left: 5rem;
+  bottom: 12vh;
+  margin-left: 2rem;
 }
 
 .hero__title {

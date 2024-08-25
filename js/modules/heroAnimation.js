@@ -18,8 +18,8 @@ export function heroAnimation() {
 
     $hero.ripples({
         resolution,
-        dropRadius: 20,
-        perturbance: 0.001, // amount of refraction
+        dropRadius: 40,
+        perturbance: 0.02, // amount of refraction
         interactive: false,
     });
 
@@ -27,7 +27,7 @@ export function heroAnimation() {
     const heroHeight = $hero.height();
 
     function triggerRipple(x, y) {
-        $hero.ripples('drop', x, y, 4, 0.08); // 1st number is size of the drop size and  2nd is amplitude of the ripple
+        $hero.ripples('drop', x, y, 40, 0.08); // 1st number is size of the drop size and  2nd is amplitude of the ripple
     }
 
     function triggerRain() {
@@ -36,21 +36,26 @@ export function heroAnimation() {
         const randomY = Math.random() * heroHeight;
         triggerRipple(randomX, randomY);
     }
+    setTimeout(triggerRain, 4000);
+    setTimeout(triggerRain, 5000);
 
-    let rainInterval = 1000;
-    let intervalId;
-    function startRain() {
-        intervalId = setInterval(() => {
-            triggerRain();
-            rainInterval = Math.max(rainInterval - 100, 50);
-            clearInterval(intervalId);
-            startRain();
-        }, rainInterval);
-    }
+    // const rainInterval = 600;
+    // let intervalId;
+    // function startRain() {
+    //     intervalId = setInterval(() => {
+    //         triggerRain();
+    //         rainInterval = Math.max(rainInterval - 100, 50);
+    //         clearInterval(intervalId);
+    //         startRain();
+    //     }, rainInterval);
+    // }
 
-    setTimeout(startRain, 3000);
+    // function startRain() {
+    //     intervalId = setInterval(triggerRain, rainInterval);
+    // }
+    // setTimeout(startRain, 3000);
 
-    setTimeout(() => {
-        clearInterval(intervalId);
-    }, 12000);
+    // setTimeout(() => {
+    //     clearInterval(intervalId);
+    // }, 5000);
 }

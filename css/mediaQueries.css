@@ -7,7 +7,7 @@
 
   /* HERO SECTION */
   .hero__text_container {
-    margin-left: 2rem;
+    margin-left: 0.5rem;
   }
 
   .hero__web,
@@ -51,11 +51,18 @@
   .hero {
     background: black url('../imgs/london_mobile.webp') no-repeat right / cover;
   }
+  .hero__text_container {
+    margin-left: 0.5rem;
+  }
 
   .intro__text {
-    padding-left: 1rem;
+    padding-left: 0.5rem;
     padding-top: 1rem;
     width: 70%;
+  }
+
+  .skills__section {
+    padding: 0 0.5rem 2rem 0.5rem;
   }
 }
 
@@ -100,9 +107,6 @@
   }
 
   /* HERO SECTION */
-  .hero__text_container {
-    margin-left: 1rem;
-  }
 
   .hero__web,
   .hero__developer {
@@ -163,10 +167,6 @@
 
 /* SKILLS SECTION */
 @media only screen and (max-width: 540px) {
-  .skills__section {
-    padding: 0 1rem 2rem 1rem;
-  }
-
   .skills__container {
     grid-template-columns: repeat(2, minmax(160px, 1fr));
     grid-template-rows: repeat(24, 25px);
