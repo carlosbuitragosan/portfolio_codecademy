@@ -7,6 +7,8 @@ export function footerReveal() {
         const $footerHeight = $footer.outerHeight();
         $main.css('margin-bottom', `${$footerHeight}px`);
     }
+    // ensure footer height is updated before observer is called
+    updateMainBottomMargin();
 
     function handleIntersection(entries) {
         entries.forEach((entry) => {
@@ -26,6 +28,4 @@ export function footerReveal() {
     $(window).resize(() => {
         updateMainBottomMargin();
     });
-
-    updateMainBottomMargin();
 }

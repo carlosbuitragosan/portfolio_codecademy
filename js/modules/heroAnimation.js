@@ -14,7 +14,7 @@ export function heroAnimation() {
 
     // RIPPLES ANIMATION
     const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    const resolution = isMobile ? 128 : 512;
+    const resolution = isMobile ? 256 : 512;
 
     $hero.ripples({
         resolution,
@@ -27,7 +27,7 @@ export function heroAnimation() {
     const heroHeight = $hero.height();
 
     function triggerRipple(x, y) {
-        $hero.ripples('drop', x, y, 20, 0.1); // 1st number is size of the dropand  2nd is amplitude of the ripple
+        $hero.ripples('drop', x, y, 20, 0.1); // 1st number is size of the drop size and  2nd is amplitude of the ripple
     }
 
     function triggerRain() {

@@ -1,6 +1,7 @@
+const $gridItems = $('.skills__category');
+
 export function skillsAnimation() {
     const $container = $('.skills__container');
-    const $gridItems = $('.skills__category');
     const $skillsTitleHeight = $('.skills__main_title').outerHeight();
 
     $gridItems.each(function () {
@@ -12,44 +13,36 @@ export function skillsAnimation() {
         $item.css({
             transform: `translateY(${translateY}px)`,
         });
-        // const containerBottom =
-        //     $container.offset().top + $container.outerHeight();
-        // const itemOffsetTop = $item.offset().top + $item.outerHeight();
-        // const translateY = containerBottom - itemOffsetTop;
-
-        // $item.css({
-        //     transform: `translateY(${translateY}px)`,
-        // });
     });
 
     function animateSkills() {
-        $('.skills__category').each(function () {
+        $gridItems.each(function () {
             $(this).css({
                 transform: 'none',
             });
         });
     }
 
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    animateSkills();
-                    observer.unobserve(entry.target);
-                }
-            });
-        },
-        { threshold: 0.5 }
-    );
-    observer.observe($('.skills__container')[0]);
+    function handleIntersection(entries) {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                animateSkills();
+                observer.unobserve(entry.target);
+            }
+        });
+    }
+
+    const observer = new IntersectionObserver(handleIntersection, {
+        threshold: 0.5,
+    });
+
+    observer.observe($container[0]);
 }
 
 export function skillsHoverEffect() {
-    const $cards = $('.skills__category');
-
-    $cards.on('mouseenter', function () {
+    $gridItems.on('mouseenter', function () {
         const $hoveredCard = $(this);
-        $cards.each(function () {
+        $gridItems.each(function () {
             const $card = $(this);
             if (!$card.is($hoveredCard)) {
                 $card.addClass('skills__category_greyed');
@@ -57,7 +50,7 @@ export function skillsHoverEffect() {
         });
     });
 
-    $cards.on('mouseleave', () => {
-        $cards.removeClass('skills__category_greyed');
+    $gridItems.on('mouseleave', () => {
+        $gridItems.removeClass('skills__category_greyed');
     });
 }

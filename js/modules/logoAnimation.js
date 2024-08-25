@@ -1,7 +1,5 @@
 export function logoAnimation() {
-    const $logoTitle = $('.logo__title');
-
-    $logoTitle.textillate({
+    $('.logo__title').textillate({
         in: {
             effect: 'fadeInDownBig',
             delay: 18,
