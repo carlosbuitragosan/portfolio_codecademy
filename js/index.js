@@ -3,10 +3,7 @@ import { heroAnimation } from './modules/heroAnimation.js';
 import { burgerMenuToggle } from './modules/burgerMenuToggle.js';
 import { headerAnimation } from './modules/headerAnimation.js';
 import { introAnimation } from './modules/introAnimation.js';
-import {
-    skillsAnimation,
-    skillsHoverEffect,
-} from './modules/skillsAnimation.js';
+import { skillsHoverEffect } from './modules/skillsAnimation.js';
 import { footerReveal } from './modules/footerReveal.js';
 
 $(document).ready(() => {
@@ -15,7 +12,6 @@ $(document).ready(() => {
     burgerMenuToggle();
     headerAnimation();
     introAnimation();
-    skillsAnimation();
     skillsHoverEffect();
     footerReveal();
 });
