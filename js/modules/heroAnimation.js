@@ -27,7 +27,7 @@ export function heroAnimation() {
     const heroHeight = $hero.height();
 
     function triggerRipple(x, y) {
-        $hero.ripples('drop', x, y, 30, 0.08); // 1st number is size of the drop size and  2nd is amplitude of the ripple
+        $hero.ripples('drop', x, y, 4, 0.08); // 1st number is size of the drop size and  2nd is amplitude of the ripple
     }
 
     function triggerRain() {
@@ -42,7 +42,7 @@ export function heroAnimation() {
     function startRain() {
         intervalId = setInterval(() => {
             triggerRain();
-            rainInterval = Math.max(rainInterval - 100, 200);
+            rainInterval = Math.max(rainInterval - 100, 50);
             clearInterval(intervalId);
             startRain();
         }, rainInterval);

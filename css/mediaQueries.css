@@ -1,4 +1,11 @@
 @media only screen and (orientation: landscape) and (max-height: 430px) {
+  /* HEADER */
+  .navbar {
+    top: 100px;
+    right: 80px;
+  }
+
+  /* HERO SECTION */
   .hero__text_container {
     margin-left: 2rem;
   }
@@ -11,10 +18,28 @@
   .hero__description {
     font-size: 1.5rem;
   }
+}
 
-  .navbar {
-    top: 100px;
-    right: 80px;
+/* SKILLS SECTION */
+@media only screen and (min-width: 1000px) {
+  .skills__section {
+    padding: 0 5rem 2rem 5rem;
+  }
+
+  .skills__container {
+    padding: 0 4rem;
+  }
+}
+
+/* SKILLS SECTION */
+@media only screen and (max-width: 870px) {
+  .skills__container {
+    grid-template-columns: repeat(4, minmax(160px, 1fr));
+  }
+
+  .skills__devops {
+    grid-column: 2;
+    grid-row: 12 / span 7;
   }
 }
 
@@ -34,7 +59,25 @@
   }
 }
 
+/* SKILLS SECTION */
+@media only screen and (max-width: 710px) {
+  .skills__container {
+    grid-template-columns: repeat(3, minmax(160px, 1fr));
+  }
+
+  .skills__devops {
+    grid-column: 1;
+    grid-row: 9 / span 7;
+  }
+
+  .skills__tools {
+    grid-column: 2;
+    grid-row: 12 / span 7;
+  }
+}
+
 @media only screen and (max-width: 600px) {
+  /* HEADER */
   .header {
     flex-direction: column;
   }
@@ -43,11 +86,20 @@
     align-self: flex-start;
   }
 
+  /* HIDE NAVBAR TO SHOW BURGER MENU */
+  .navbar {
+    position: absolute;
+    top: 110px;
+    transform: translateY(-150px);
+    opacity: 0;
+  }
+
   .menu {
     flex-direction: column;
     gap: 2rem;
   }
 
+  /* HERO SECTION */
   .hero__text_container {
     margin-left: 1rem;
   }
@@ -59,14 +111,6 @@
 
   .hero__description {
     font-size: 2rem;
-  }
-
-  /* NAVBAR TRANSITION FROM HIDDEN TO VISIBLE */
-  .navbar {
-    position: absolute;
-    top: 110px;
-    transform: translateY(-150px);
-    opacity: 0;
   }
 
   /* Keyframes for sliding down header with opacity change after transform */
@@ -111,7 +155,25 @@
     animation: slideUp 0.5s forwards;
   }
 
+  /* INTRODUCTION SECTION */
   .intro__text {
     width: 95%;
+  }
+}
+
+/* SKILLS SECTION */
+@media only screen and (max-width: 540px) {
+  .skills__section {
+    padding: 0 1rem 2rem 1rem;
+  }
+
+  .skills__container {
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+    grid-template-rows: repeat(24, 25px);
+  }
+
+  .skills__databases {
+    grid-column: 1;
+    grid-row: 17 / span 7;
   }
 }
