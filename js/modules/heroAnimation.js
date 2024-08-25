@@ -3,17 +3,18 @@ export function heroAnimation() {
 
     $('.hero__text').each(function () {
         $(this).textillate({
-            initialDelay: 1000,
+            initialDelay: 1200,
             in: {
                 effect: 'bounceIn',
                 reverse: true,
+                delay: 110,
             },
         });
     });
 
     // RIPPLES ANIMATION
     const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    const resolution = isMobile ? 256 : 512;
+    const resolution = isMobile ? 128 : 512;
 
     $hero.ripples({
         resolution,
@@ -36,10 +37,13 @@ export function heroAnimation() {
         triggerRipple(randomX, randomY);
     }
 
-    // Repeat with a random interval to create a natural rain effect
-    const rainInterval = setInterval(triggerRain, 1000);
-
+    // trigegerRain every 1s
+    let rainInterval;
+    setTimeout(() => {
+        rainInterval = setInterval(triggerRain, 1000);
+    }, 3000);
+    // stop triggerRain after Xs
     setTimeout(() => {
         clearInterval(rainInterval);
-    }, 20000); // 5000ms = 5 seconds
+    }, 12000);
 }
