@@ -38,24 +38,4 @@ export function heroAnimation() {
     }
     setTimeout(triggerRain, 4000);
     setTimeout(triggerRain, 5000);
-
-    // const rainInterval = 600;
-    // let intervalId;
-    // function startRain() {
-    //     intervalId = setInterval(() => {
-    //         triggerRain();
-    //         rainInterval = Math.max(rainInterval - 100, 50);
-    //         clearInterval(intervalId);
-    //         startRain();
-    //     }, rainInterval);
-    // }
-
-    // function startRain() {
-    //     intervalId = setInterval(triggerRain, rainInterval);
-    // }
-    // setTimeout(startRain, 3000);
-
-    // setTimeout(() => {
-    //     clearInterval(intervalId);
-    // }, 5000);
 }
