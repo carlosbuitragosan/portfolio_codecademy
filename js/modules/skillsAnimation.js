@@ -1,43 +1,43 @@
+const $container = $('.skills__container');
 const $gridItems = $('.skills__category');
 
-// export function skillsAnimation() {
-//     const $container = $('.skills__container');
-//     const $skillsTitleHeight = $('.skills__main_title').outerHeight();
+export function skillsAnimation() {
+    $gridItems.each(function () {
+        const $item = $(this);
+        const containerBottom =
+            $container.offset().top + $container.outerHeight();
+        const itemOffsetTop = $item.offset().top + $item.outerHeight();
+        const translateY = containerBottom - itemOffsetTop;
 
-//     $gridItems.each(function () {
-//         const $item = $(this);
-//         const containerTop = $container.offset().top + $skillsTitleHeight;
-//         const itemTop = $item.offset().top;
-//         const translateY = containerTop - itemTop;
+        $item.css({
+            transform: `translateY(${translateY}px)`,
+        });
+    });
 
-//         $item.css({
-//             transform: `translateY(${translateY}px)`,
-//         });
-//     });
+    function animateSkills() {
+        $gridItems.each(function () {
+            $(this).css({
+                transform: 'none',
+            });
+        });
+    }
 
-//     function animateSkills() {
-//         $gridItems.each(function () {
-//             $(this).css({
-//                 transform: 'none',
-//             });
-//         });
-//     }
+    function handleIntersection(entries) {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                console.log('intersecting');
+                animateSkills();
+                observer.unobserve(entry.target);
+            }
+        });
+    }
 
-//     function handleIntersection(entries) {
-//         entries.forEach((entry) => {
-//             if (entry.isIntersecting) {
-//                 animateSkills();
-//                 observer.unobserve(entry.target);
-//             }
-//         });
-//     }
+    const observer = new IntersectionObserver(handleIntersection, {
+        threshold: 0.5,
+    });
 
-//     const observer = new IntersectionObserver(handleIntersection, {
-//         threshold: 0.5,
-//     });
-
-//     observer.observe($container[0]);
-// }
+    observer.observe($container[0]);
+}
 
 export function skillsHoverEffect() {
     $gridItems.on('mouseenter', function () {
