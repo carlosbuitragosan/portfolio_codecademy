@@ -6,9 +6,9 @@
   }
 
   /* HERO SECTION */
-  .hero__text_container {
+  /* .hero__text_container {
     margin-left: 0.5rem;
-  }
+  } */
 
   .hero__web,
   .hero__developer {
@@ -21,13 +21,9 @@
 }
 
 /* SKILLS SECTION */
-@media only screen and (min-width: 1000px) {
-  .skills__section {
-    padding: 0 5rem 2rem 5rem;
-  }
-
+@media only screen and (min-width: 1200px) {
   .skills__container {
-    padding: 0 4rem;
+    padding: 0 10vw;
   }
 }
 
