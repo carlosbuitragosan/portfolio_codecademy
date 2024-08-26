@@ -1,7 +1,7 @@
 const $container = $('.skills__container');
 const $gridItems = $('.skills__category');
 
-export function skillsAnimation() {
+function itemsInitialPosition() {
     $gridItems.each(function () {
         const $item = $(this);
         const containerBottom =
@@ -13,29 +13,30 @@ export function skillsAnimation() {
             transform: `translateY(${translateY}px)`,
         });
     });
+}
 
-    function animateSkills() {
-        $gridItems.each(function () {
-            $(this).css({
-                transform: 'none',
-            });
+function animateSkills() {
+    $gridItems.each(function () {
+        $(this).css({
+            transform: 'none',
         });
-    }
+    });
+}
+
+export function skillsAnimation() {
+    itemsInitialPosition();
 
     function handleIntersection(entries) {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                console.log('intersecting');
                 animateSkills();
                 observer.unobserve(entry.target);
             }
         });
     }
-
     const observer = new IntersectionObserver(handleIntersection, {
         threshold: 0.5,
     });
-
     observer.observe($container[0]);
 }
 
