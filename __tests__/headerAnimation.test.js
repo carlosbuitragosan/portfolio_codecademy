@@ -16,7 +16,8 @@ const textillateMock = jest.fn(() => ({
     in: jest.fn(),
 }));
 
-jest.mock('textillate', () => textillateMock);
+// previously: jest.mock('textillate', () => textillateMock);
+$.fn.textillate = textillateMock;
 
 let $window;
 let $header;
@@ -67,9 +68,7 @@ describe('Header animation', () => {
 
 describe('Logo animation', () => {
     test('textillate should be called to animate logo on page load', () => {
-        $(document).ready(() => {
-            expect(textillateMock).toHaveBeenCalled();
-        });
+        expect(textillateMock).toHaveBeenCalled();
     });
 
     test('textillate should be called to animate logo when scrolling back and header comes into view.', () => {

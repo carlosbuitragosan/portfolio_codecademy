@@ -1,6 +1,4 @@
-export function heroAnimation() {
-    const $hero = $('.hero');
-
+export function animateHeroText() {
     $('.hero__text').each(function () {
         $(this).textillate({
             initialDelay: 1200,
@@ -11,7 +9,10 @@ export function heroAnimation() {
             },
         });
     });
+}
 
+export function heroImageAnimation() {
+    const $hero = $('.hero');
     // RIPPLES ANIMATION
     const isMobile = window.matchMedia('(max-width: 767px)').matches;
     const resolution = isMobile ? 256 : 512;
