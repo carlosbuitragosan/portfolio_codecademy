@@ -4,6 +4,7 @@ export function logoAnimation() {
         .textillate({
             in: {
                 effect: 'fadeInDownBig',
+                delayScale: 2,
                 delay: 18,
             },
         });
