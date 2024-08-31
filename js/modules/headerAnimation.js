@@ -13,7 +13,7 @@ export function headerAnimation() {
             headerVisible = false;
         } else if (!headerVisible && currentScroll <= 150) {
             $header.slideDown('fast');
-            $logoTitle.css('display', 'block').textillate('in');
+            $logoTitle.css('visibility', 'visible').textillate('in');
             headerVisible = true;
         }
         lastScrollTop = currentScroll;
