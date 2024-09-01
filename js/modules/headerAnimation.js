@@ -1,11 +1,11 @@
 export function headerAnimation() {
-    let lastScrollTop = 0;
     let headerVisible = true;
     const $logoTitle = $('.logo__title');
     const $header = $('.header');
 
     // this function triggers with each scroll.
     $(window).on('scroll', function () {
+        let lastScrollTop = 0;
         const currentScroll = $(this).scrollTop(); // distance of page from the top. it's only defined when you start scrolling.
 
         if (headerVisible && currentScroll > 150) {

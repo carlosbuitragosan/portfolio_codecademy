@@ -13,9 +13,9 @@ import {
 import { footerReveal } from './modules/footerReveal.js';
 
 $(document).ready(() => {
+    heroImageAnimation();
     logoAnimation();
     animateHeroText();
-    heroImageAnimation();
     burgerMenuToggle();
     headerAnimation();
     introAnimation();

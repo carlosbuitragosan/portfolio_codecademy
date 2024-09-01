@@ -1,12 +1,19 @@
-/**
- * @jest-environment jsdom
- */
-// above statement solves issue 'document is not defined'.
-
+import $ from 'jquery';
+import { jest } from '@jest/globals';
 import { animateHeroText } from '../js/modules/heroAnimation';
-import { textillateMock, setupDOM, setupMocks } from '../utils/testUtils';
+// makes jQuery globally available.
+global.$ = $;
+global.jQuery = $;
 
-const html = `<div class="hero">
+const textillateMock = jest.fn(() => ({
+    in: jest.fn(),
+}));
+
+jest.mock('textillate', () => textillateMock);
+
+const setupDOM = () => {
+    document.body.innerHTML = `
+  <div class="hero">
       <div class="hero__text_container">
         <h1 class="hero__title">
           <span class="hero__text">Web</span>
@@ -14,10 +21,12 @@ const html = `<div class="hero">
         </h1>
       </div>
     </div>`;
+};
 
 describe('hero text', () => {
-    setupMocks();
-    setupDOM(html);
+    // previously: jest.mock('textillate', () => textillateMock) which only used with imports.
+    $.fn.textillate = textillateMock;
+    setupDOM();
     animateHeroText();
 
     test('textillate is called to animate text on page load', () => {
