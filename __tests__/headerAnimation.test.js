@@ -1,55 +1,39 @@
 /**
  * @jest-environment jsdom
  */
-
-// import jest when using ES modules
-import { expect, jest } from '@jest/globals';
-import $ from 'jquery';
 import { headerAnimation } from '../js/modules/headerAnimation.js';
-
-// makes jQuery globally available.
-global.$ = $;
-global.jQuery = $;
-
-// mock textillate function
-const textillateMock = jest.fn(() => ({
-    in: jest.fn(),
-}));
-
-// previously: jest.mock('textillate', () => textillateMock);
-$.fn.textillate = textillateMock;
+import {
+    textillateMock,
+    setupDOM,
+    setupMocks,
+    clearMocks,
+} from '../utils/testUtils.js';
 
 let $window;
 let $header;
-let $logoTitle;
 
-const setupDOM = () => {
-    document.body.innerHTML = `
+const html = `
     <header class="header" >
     <div class="logo__container">
     <a class="logo" href="#"><h1 class="logo__title">CARLOS BUITRAGO</h1></a>
     </div>
     </header>
     `;
-    $window = $(window);
-    $header = $('.header');
-    $logoTitle = $('.logo__title');
-};
 
 beforeAll(() => {
-    global.scrollTo = jest.fn();
+    setupMocks();
 });
 
 beforeEach(() => {
-    setupDOM();
+    setupDOM(html);
+    $window = $(window);
+    $header = $('.header');
     headerAnimation();
 });
 
 // clear environment after each test
 afterEach(() => {
-    textillateMock.mockClear();
-    textillateMock().in.mockClear();
-    $(window).off('scroll');
+    clearMocks();
 });
 
 describe('Header animation', () => {
