@@ -12,14 +12,12 @@ import {
 } from './modules/skillsAnimation.js';
 import { footerReveal } from './modules/footerReveal.js';
 
-$(document).ready(() => {
-    heroImageAnimation();
-    logoAnimation();
-    animateHeroText();
-    burgerMenuToggle();
-    headerAnimation();
-    introAnimation();
-    skillsAnimation();
-    skillsHoverEffect();
-    footerReveal();
-});
+heroImageAnimation();
+logoAnimation();
+animateHeroText();
+burgerMenuToggle();
+headerAnimation();
+introAnimation();
+skillsAnimation();
+skillsHoverEffect();
+footerReveal();
