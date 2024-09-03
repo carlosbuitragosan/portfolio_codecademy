@@ -11,7 +11,7 @@ let $introText;
 
 const setupDOM = () => {
     document.body.innerHTML = `<section class="intro__wrapper">
-        <p class="intro__text">I am a passionate Web Developer eager to grow my skills and contribute to meaningful projects. I thrive in collaborative environments and am excited to be part of a dynamic development team.</p>
+        <p class="intro__text"></p>
       </section>`;
 };
 

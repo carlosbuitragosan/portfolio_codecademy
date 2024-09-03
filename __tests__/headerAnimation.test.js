@@ -16,19 +16,17 @@ jest.mock('textillate', () => textillateMock);
 
 let $window;
 let $header;
-let $logoTitle;
 
 const setupDOM = () => {
     document.body.innerHTML = `
     <header class="header" >
     <div class="logo__container">
-    <a class="logo" href="#"><h1 class="logo__title">CARLOS BUITRAGO</h1></a>
+    <a class="logo" href="#"><h1 class="logo__title"></h1></a>
     </div>
     </header>
     `;
     $window = $(window);
     $header = $('.header');
-    $logoTitle = $('.logo__title');
 };
 
 beforeAll(() => {

@@ -1,35 +1,36 @@
 import $ from 'jquery';
-import { jest } from '@jest/globals';
+import { afterEach, beforeEach, jest } from '@jest/globals';
 import { animateHeroText } from '../js/modules/heroAnimation';
 // makes jQuery globally available.
 global.$ = $;
 global.jQuery = $;
 
-const textillateMock = jest.fn(() => ({
-    in: jest.fn(),
-}));
-
-jest.mock('textillate', () => textillateMock);
+$.fn.textillate = jest.fn();
 
 const setupDOM = () => {
     document.body.innerHTML = `
-  <div class="hero">
-      <div class="hero__text_container">
-        <h1 class="hero__title">
           <span class="hero__text">Web</span>
-          <span class="hero__text">Developer</span>
-        </h1>
-      </div>
-    </div>`;
+          <span class="hero__text">Developer</span>`;
 };
 
 describe('hero text', () => {
-    // previously: jest.mock('textillate', () => textillateMock) which only used with imports.
-    $.fn.textillate = textillateMock;
-    setupDOM();
-    animateHeroText();
+    beforeEach(() => {
+        setupDOM();
+    });
+
+    afterEach(() => {
+        document.body.innerHTML = '';
+    });
 
     test('textillate is called to animate text on page load', () => {
-        expect(textillateMock).toHaveBeenCalled();
+        animateHeroText();
+        expect($.fn.textillate).toHaveBeenCalledWith({
+            initialDelay: 1200,
+            in: {
+                effect: 'bounceIn',
+                reverse: true,
+                delay: 110,
+            },
+        });
     });
 });
