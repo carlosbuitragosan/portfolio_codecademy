@@ -1,35 +1,26 @@
-const $container = $('.skills__container');
-const $gridItems = $('.skills__category');
-
-function itemsInitialPosition() {
-    $gridItems.each(function () {
-        const $item = $(this);
+export function itemsInitialPosition(container, items) {
+    items.forEach((item, index) => {
         const containerBottom =
-            $container.offset().top + $container.outerHeight();
-        const itemOffsetTop = $item.offset().top + $item.outerHeight();
-        const translateY = containerBottom - itemOffsetTop;
-
-        $item.css({
-            transform: `translateY(${translateY}px)`,
-        });
+            container.getBoundingClientRect().top + container.offsetHeight;
+        const itemBottom = item.getBoundingClientRect().top + item.offsetHeight;
+        const translateY = containerBottom - itemBottom;
+        item.style.transform = `translateY(${translateY}px)`;
     });
 }
 
-function animateSkills() {
-    $gridItems.each(function () {
-        $(this).css({
-            transform: 'none',
-        });
+export function animateSkills(items) {
+    items.forEach((item) => {
+        item.style.transform = 'none';
     });
 }
 
-export function skillsAnimation() {
-    itemsInitialPosition();
+export function skillsAnimation(container, items) {
+    itemsInitialPosition(container, items);
 
     function handleIntersection(entries) {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                animateSkills();
+                animateSkills(items);
                 observer.unobserve(entry.target);
             }
         });
@@ -37,21 +28,24 @@ export function skillsAnimation() {
     const observer = new IntersectionObserver(handleIntersection, {
         threshold: 0.5,
     });
-    observer.observe($container[0]);
+    observer.observe(container);
 }
 
-export function skillsHoverEffect() {
-    $gridItems.on('mouseenter', function () {
-        const $hoveredCard = $(this);
-        $gridItems.each(function () {
-            const $card = $(this);
-            if (!$card.is($hoveredCard)) {
-                $card.addClass('skills__category_greyed');
-            }
+export function skillsHoverEffect(items) {
+    items.forEach((hoveredCard) => {
+        hoveredCard.addEventListener('mouseenter', () => {
+            items.forEach((card) => {
+                if (card !== hoveredCard) {
+                    card.classList.toggle('skills__category_greyed');
+                }
+            });
         });
     });
-
-    $gridItems.on('mouseleave', () => {
-        $gridItems.removeClass('skills__category_greyed');
+    items.forEach((item) => {
+        item.addEventListener('mouseleave', () => {
+            items.forEach((card) => {
+                card.classList.remove('skills__category_greyed');
+            });
+        });
     });
 }

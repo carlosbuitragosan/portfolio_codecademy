@@ -12,12 +12,15 @@ import {
 } from './modules/skillsAnimation.js';
 import { footerReveal } from './modules/footerReveal.js';
 
+const container = document.querySelector('.skills__container');
+const gridItems = document.querySelectorAll('.skills__category');
+
 heroImageAnimation();
 logoAnimation();
 animateHeroText();
 burgerMenuToggle();
 headerAnimation();
 introAnimation();
-skillsAnimation();
-skillsHoverEffect();
+skillsAnimation(container, gridItems);
+skillsHoverEffect(gridItems);
 footerReveal();
