@@ -1,5 +1,5 @@
 export function itemsInitialPosition(container, items) {
-    items.forEach((item, index) => {
+    items.forEach((item) => {
         const containerBottom =
             container.getBoundingClientRect().top + container.offsetHeight;
         const itemBottom = item.getBoundingClientRect().top + item.offsetHeight;
@@ -36,7 +36,7 @@ export function skillsHoverEffect(items) {
         hoveredCard.addEventListener('mouseenter', () => {
             items.forEach((card) => {
                 if (card !== hoveredCard) {
-                    card.classList.toggle('skills__category_greyed');
+                    card.classList.add('skills__category_greyed');
                 }
             });
         });

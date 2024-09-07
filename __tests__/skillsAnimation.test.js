@@ -30,12 +30,9 @@ beforeAll(() => {
     gridItems = document.querySelectorAll('.skills__category');
 });
 
-beforeEach(() => {
-    // mock getBoundingClientRect(), offsetHeight, style.transform?
-});
-
 afterEach(() => {
-    $('body').empty();
+    // Restore all mocks to their original implementations
+    jest.resetAllMocks();
 });
 
 describe('skillsAnimation', () => {
@@ -91,6 +88,56 @@ describe('skillsAnimation', () => {
             const expectedTranslateY = containerBottom - itemBottom;
             expect(item.style.transform).toBe(
                 `translateY(${expectedTranslateY}px)`
+            );
+        });
+    });
+});
+
+describe('skillsHoverEffect()', () => {
+    let items;
+    let firstItem;
+    beforeEach(() => {
+        // conver Nodelist to array for easier manipulation
+        items = Array.from(gridItems);
+        [firstItem] = items;
+        // call the function
+        skillsHoverEffect(items);
+    });
+
+    it('Applies selected class to all elements except then on hovered on to', () => {
+        // simulate mouseenter on first item
+        const mouseEnterEvent = new Event('mouseenter');
+        firstItem.dispatchEvent(mouseEnterEvent);
+
+        // check the class has been added
+        items.forEach((item, index) => {
+            if (index === 0) {
+                // hovered item should not have class added
+                expect(item.classList.contains('skills__category_greyed')).toBe(
+                    false
+                );
+            } else {
+                // all other items should have class added
+                expect(item.classList.contains('skills__category_greyed')).toBe(
+                    true
+                );
+            }
+        });
+    });
+
+    it('removes class to all elements on mouseleave', () => {
+        // simulate mouseenter on first item
+        const mouseEnterEvent = new Event('mouseenter');
+        firstItem.dispatchEvent(mouseEnterEvent);
+
+        // simulate mouseleave on first item
+        const mouseLeaveEvent = new Event('mouseleave');
+        firstItem.dispatchEvent(mouseLeaveEvent);
+
+        // check the class has been removed on all other items
+        items.forEach((item) => {
+            expect(item.classList.contains('skills__category_greyed')).toBe(
+                false
             );
         });
     });
