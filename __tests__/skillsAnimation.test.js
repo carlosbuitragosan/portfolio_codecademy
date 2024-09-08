@@ -1,14 +1,17 @@
-import { jest, beforeAll, describe, expect, test } from '@jest/globals';
-import $ from 'jquery';
+import {
+    jest,
+    beforeAll,
+    describe,
+    expect,
+    test,
+    beforeEach,
+} from '@jest/globals';
 import {
     itemsInitialPosition,
     animateSkills,
     skillsAnimation,
     skillsHoverEffect,
 } from '../js/modules/skillsAnimation';
-
-global.$ = $;
-global.jQuery = $;
 
 let container;
 let gridItems;
@@ -35,7 +38,7 @@ afterEach(() => {
     jest.resetAllMocks();
 });
 
-describe('skillsAnimation', () => {
+describe('itemsInitialPosition()', () => {
     it('Items should move to the bottom of the container', () => {
         // mock values for for height and distance from top of viewport
         const itemsViewportTop = [1298, 1400, 1500, 1600, 1700];
@@ -43,7 +46,7 @@ describe('skillsAnimation', () => {
         const containerViewportTop = 1298;
         const containerOffsetHeight = 680;
 
-        // Mock getBoundingClientRect and offsetHeight for container
+        // Mock getBoundingClientRect for container
         jest.spyOn(container, 'getBoundingClientRect').mockImplementation(
             () => ({
                 top: containerViewportTop,
@@ -51,13 +54,13 @@ describe('skillsAnimation', () => {
                 height: containerOffsetHeight,
             })
         );
-
+        // Mock offsetHeight for container
         jest.spyOn(container, 'offsetHeight', 'get').mockReturnValue(
             containerOffsetHeight
         );
 
-        // Mock getBoundingClientRect and offsetHeight for elements
         gridItems.forEach((item, index) => {
+            // Mock getBoundingClientRect for elements
             jest.spyOn(item, 'getBoundingClientRect').mockImplementation(
                 () => ({
                     top: itemsViewportTop[index],
@@ -65,7 +68,7 @@ describe('skillsAnimation', () => {
                     height: itemOffsetHeight,
                 })
             );
-
+            // Mock offsetHeight for elements
             jest.spyOn(item, 'offsetHeight', 'get').mockReturnValue(
                 itemOffsetHeight
             );
@@ -139,6 +142,62 @@ describe('skillsHoverEffect()', () => {
             expect(item.classList.contains('skills__category_greyed')).toBe(
                 false
             );
+        });
+    });
+});
+
+describe('skillsAnimation', () => {
+    describe('animateSkills', () => {
+        it('appies transform property to elements', () => {
+            // mock the style property fo each element
+            gridItems.forEach((item) => {
+                Object.defineProperty(item, 'style', {
+                    value: { transform: '' },
+                    writable: true,
+                });
+            });
+
+            // call the function to be tested
+            animateSkills(gridItems);
+
+            // Verify the transform style for each item
+            gridItems.forEach((item) => {
+                expect(item.style.transform).toBe('none');
+            });
+        });
+    });
+
+    describe('IntersectionObserver()', () => {
+        let observerCallback;
+        const observe = jest.fn();
+        const disconnect = jest.fn();
+
+        beforeEach(() => {
+            // mock the intersection observer
+            global.IntersectionObserver = jest.fn((callback) => {
+                observerCallback = callback;
+                return {
+                    observe,
+                    disconnect,
+                };
+            });
+        });
+
+        it('detects intersection', () => {
+            // call the function to test
+            skillsAnimation(container, gridItems);
+
+            // simulate intersection event
+            const entry = {
+                target: container,
+                isIntersecting: true,
+            };
+
+            // handleIntersecion(entrie)
+            observerCallback([entry]);
+
+            expect(observe).toHaveBeenCalled();
+            expect(disconnect).toHaveBeenCalled();
         });
     });
 });

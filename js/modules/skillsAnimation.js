@@ -15,19 +15,19 @@ export function animateSkills(items) {
 }
 
 export function skillsAnimation(container, items) {
-    itemsInitialPosition(container, items);
-
     function handleIntersection(entries) {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 animateSkills(items);
-                observer.unobserve(entry.target);
+                observer.disconnect();
             }
         });
     }
+
     const observer = new IntersectionObserver(handleIntersection, {
         threshold: 0.5,
     });
+
     observer.observe(container);
 }
 
