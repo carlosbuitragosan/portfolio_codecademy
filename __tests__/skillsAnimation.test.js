@@ -27,15 +27,18 @@ const setupDOM = () => {
         </div>`;
 };
 
-beforeAll(() => {
+beforeEach(() => {
     setupDOM();
     container = document.querySelector('.skills__container');
     gridItems = document.querySelectorAll('.skills__category');
 });
 
 afterEach(() => {
+    // clear the DOM
+    document.body.innerHTML = '';
+
     // Restore all mocks to their original implementations
-    jest.resetAllMocks();
+    jest.clearAllMocks();
 });
 
 describe('itemsInitialPosition()', () => {
@@ -181,6 +184,14 @@ describe('skillsAnimation', () => {
                     disconnect,
                 };
             });
+
+            // mock the style property fo each element
+            gridItems.forEach((item) => {
+                Object.defineProperty(item, 'style', {
+                    value: { transform: '' },
+                    writable: true,
+                });
+            });
         });
 
         it('detects intersection', () => {
@@ -193,9 +204,15 @@ describe('skillsAnimation', () => {
                 isIntersecting: true,
             };
 
-            // handleIntersecion(entrie)
+            // trigger callback handleIntersecion(entry)
             observerCallback([entry]);
 
+            // Verify the transform style for each item
+            gridItems.forEach((item) => {
+                expect(item.style.transform).toBe('none');
+            });
+
+            expect(typeof animateSkills).toBe('function');
             expect(observe).toHaveBeenCalled();
             expect(disconnect).toHaveBeenCalled();
         });
