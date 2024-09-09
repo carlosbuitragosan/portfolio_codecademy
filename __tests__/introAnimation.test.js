@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, jest } from '@jest/globals';
 import $ from 'jquery';
-import { introAnimation } from '../js/modules/introAnimation';
+import { fadeInUpText } from '../js/modules/introAnimation';
 
 global.$ = $;
 global.jQuery = $;
@@ -30,7 +30,7 @@ beforeEach(() => {
         disconnect: jest.fn(),
     }));
 
-    introAnimation();
+    fadeInUpText($introText);
 });
 
 afterEach(() => {
@@ -51,6 +51,7 @@ describe('Intro text animation', () => {
     test('textillate animation should trigger when element comes into view', () => {
         // extract intersectionObserver callback
         const intersection = IntersectionObserver.mock.calls[0][0];
+
         // simulate intersection
         intersection([{ target: $introText[0], isIntersecting: true }]);
 

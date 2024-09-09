@@ -1,11 +1,9 @@
-export function logoAnimation() {
-    $('.logo__title')
-        .css('visibility', 'visible')
-        .textillate({
-            in: {
-                effect: 'fadeInDownBig',
-                delayScale: 2,
-                delay: 18,
-            },
-        });
+export function fadeInDownText($text) {
+    $text.css('visibility', 'visible').textillate({
+        in: {
+            effect: 'fadeInDownBig',
+            delayScale: 2,
+            delay: 18,
+        },
+    });
 }

@@ -38,6 +38,7 @@
   .burger__menu input {
     appearance: none; /* removes checkbox appareance and takes the above settings (widht, length) */
     pointer-events: none; /* disable click on the checkbox so that the click is handled by the b_menu */
+    width: 20px;
   }
 
   .burger__menu:has(input:checked)::before {

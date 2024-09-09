@@ -1,13 +1,9 @@
-export function footerReveal() {
-    const $sentinel = $('.sentinel');
-    const $main = $('.main');
-    const $footer = $('.footer');
-
+export function showFooter($main, $sentinel, $footer) {
     function updateMainBottomMargin() {
         const $footerHeight = $footer.outerHeight();
         $main.css('margin-bottom', `${$footerHeight}px`);
     }
-    // ensure footer height is updated before observer is called
+    // update margin
     updateMainBottomMargin();
 
     function handleIntersection(entries) {

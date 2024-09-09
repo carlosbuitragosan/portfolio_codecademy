@@ -1,7 +1,6 @@
-export function headerAnimation() {
+export function toggleHeaderOnScroll($header) {
     let headerVisible = true;
     const $logoTitle = $('.logo__title');
-    const $header = $('.header');
 
     // this function triggers with each scroll.
     $(window).on('scroll', function () {
@@ -9,6 +8,7 @@ export function headerAnimation() {
         const currentScroll = $(this).scrollTop(); // distance of page from the top. it's only defined when you start scrolling.
 
         if (headerVisible && currentScroll > 150) {
+            console.log('hiding header');
             $header.slideUp('fast');
             headerVisible = false;
         } else if (!headerVisible && currentScroll <= 150) {

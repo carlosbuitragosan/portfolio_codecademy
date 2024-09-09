@@ -1,8 +1,8 @@
-export function introAnimation() {
+export function fadeInUpText($text) {
     function handleIntersection(entries) {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                $(entry.target).textillate({
+                $text.textillate({
                     in: {
                         effect: 'fadeInUp',
                         sync: true,
@@ -14,7 +14,7 @@ export function introAnimation() {
     }
 
     const observer = new IntersectionObserver(handleIntersection, {
-        threshold: 0.8,
+        threshold: 0.6,
     });
 
     observer.observe($('.intro__text')[0]);

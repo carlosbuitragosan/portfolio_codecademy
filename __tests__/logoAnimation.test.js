@@ -1,7 +1,7 @@
 import { afterEach, describe, jest } from '@jest/globals';
 import $ from 'jquery';
 
-import { logoAnimation } from '../js/modules/logoAnimation';
+import { fadeInDownText } from '../js/modules/logoAnimation';
 
 global.$ = $;
 global.jQuery = $;
@@ -20,7 +20,7 @@ describe('Logo animation', () => {
     });
 
     test('logo becomes visible and animates on page load', () => {
-        logoAnimation();
+        fadeInDownText($logoTitle);
 
         expect($logoTitle.css('visibility')).toBe('visible');
         expect($.fn.textillate).toHaveBeenCalledWith({

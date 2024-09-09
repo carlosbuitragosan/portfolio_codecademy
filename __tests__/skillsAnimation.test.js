@@ -7,10 +7,10 @@ import {
     beforeEach,
 } from '@jest/globals';
 import {
-    itemsInitialPosition,
-    animateSkills,
-    skillsAnimation,
-    skillsHoverEffect,
+    moveItemsToBottom,
+    resetTransformItems,
+    intersectionAnimation,
+    highlightOnHover,
 } from '../js/modules/skillsAnimation';
 
 let container;
@@ -41,7 +41,7 @@ afterEach(() => {
     jest.clearAllMocks();
 });
 
-describe('itemsInitialPosition()', () => {
+describe('moveItemsToBottom()', () => {
     it('Items should move to the bottom of the container', () => {
         // mock values for for height and distance from top of viewport
         const itemsViewportTop = [1298, 1400, 1500, 1600, 1700];
@@ -84,7 +84,7 @@ describe('itemsInitialPosition()', () => {
         });
 
         // call the function to be tested
-        itemsInitialPosition(container, gridItems);
+        moveItemsToBottom(container, gridItems);
 
         // Verify the transform style for each item
         gridItems.forEach((item, index) => {
@@ -99,7 +99,7 @@ describe('itemsInitialPosition()', () => {
     });
 });
 
-describe('skillsHoverEffect()', () => {
+describe('highlightOnHover()', () => {
     let items;
     let firstItem;
     beforeEach(() => {
@@ -107,10 +107,10 @@ describe('skillsHoverEffect()', () => {
         items = Array.from(gridItems);
         [firstItem] = items;
         // call the function
-        skillsHoverEffect(items);
+        highlightOnHover(items);
     });
 
-    it('Applies selected class to all elements except then on hovered on to', () => {
+    it('pplies class to all elements except the hovered one', () => {
         // simulate mouseenter on first item
         const mouseEnterEvent = new Event('mouseenter');
         firstItem.dispatchEvent(mouseEnterEvent);
@@ -149,8 +149,8 @@ describe('skillsHoverEffect()', () => {
     });
 });
 
-describe('skillsAnimation', () => {
-    describe('animateSkills', () => {
+describe('intersectionAnimation', () => {
+    describe('resetTransformItems', () => {
         it('appies transform property to elements', () => {
             // mock the style property fo each element
             gridItems.forEach((item) => {
@@ -161,7 +161,7 @@ describe('skillsAnimation', () => {
             });
 
             // call the function to be tested
-            animateSkills(gridItems);
+            resetTransformItems(gridItems);
 
             // Verify the transform style for each item
             gridItems.forEach((item) => {
@@ -196,7 +196,7 @@ describe('skillsAnimation', () => {
 
         it('detects intersection', () => {
             // call the function to test
-            skillsAnimation(container, gridItems);
+            intersectionAnimation(container, gridItems);
 
             // simulate intersection event
             const entry = {
@@ -212,7 +212,7 @@ describe('skillsAnimation', () => {
                 expect(item.style.transform).toBe('none');
             });
 
-            expect(typeof animateSkills).toBe('function');
+            expect(typeof resetTransformItems).toBe('function');
             expect(observe).toHaveBeenCalled();
             expect(disconnect).toHaveBeenCalled();
         });

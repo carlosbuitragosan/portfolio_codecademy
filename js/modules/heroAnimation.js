@@ -1,5 +1,5 @@
-export function animateHeroText() {
-    $('.hero__text').each(function () {
+export function bounceInText($text) {
+    $text.each(function () {
         $(this).textillate({
             initialDelay: 1200,
             in: {
@@ -11,29 +11,28 @@ export function animateHeroText() {
     });
 }
 
-export function heroImageAnimation() {
-    const $hero = $('.hero');
+export function backgroundRipples($background) {
     const isMobile = window.matchMedia('(max-width: 767px)').matches;
     const resolution = isMobile ? 256 : 512;
 
-    $hero.ripples({
+    $background.ripples({
         resolution,
         dropRadius: 40,
         perturbance: 0.02, // amount of refraction
         interactive: false,
     });
 
-    const heroWidth = $hero.width();
-    const heroHeight = $hero.height();
+    const bgWidth = $background.width();
+    const bgHeight = $background.height();
 
     function triggerRipple(x, y) {
-        $hero.ripples('drop', x, y, 20, 0.08); // 1st number is size of the drop size and  2nd is amplitude of the ripple
+        $background.ripples('drop', x, y, 20, 0.08); // 1st number is size of the drop size and  2nd is amplitude of the ripple
     }
 
     function triggerRain() {
         // Random position within the $hero element
-        const randomX = Math.random() * heroWidth;
-        const randomY = Math.random() * heroHeight;
+        const randomX = Math.random() * bgWidth;
+        const randomY = Math.random() * bgHeight;
         triggerRipple(randomX, randomY);
     }
     setTimeout(triggerRain, 4000);

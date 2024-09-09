@@ -6,6 +6,7 @@ global.$ = $;
 global.jQuery = $;
 
 let $burgerMenu;
+let $burgerMenuInput;
 let $navbar;
 
 const setupDom = () => {
@@ -17,11 +18,12 @@ const setupDom = () => {
 beforeAll(() => {
     setupDom();
     $burgerMenu = $('.burger__menu');
+    $burgerMenuInput = $('.burger__menu input');
     $navbar = $('.navbar');
 });
 
 beforeEach(() => {
-    burgerMenuToggle();
+    burgerMenuToggle($burgerMenuInput);
     // reset the state of the checkbox
     $burgerMenu.find('input').prop('checked', false).trigger('change');
     $navbar.removeClass('show hide');

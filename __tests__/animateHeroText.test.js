@@ -1,10 +1,9 @@
 import $ from 'jquery';
 import { afterEach, beforeEach, jest } from '@jest/globals';
-import { animateHeroText } from '../js/modules/heroAnimation';
+import { bounceInText } from '../js/modules/heroAnimation';
 // makes jQuery globally available.
 global.$ = $;
 global.jQuery = $;
-
 $.fn.textillate = jest.fn();
 
 const setupDOM = () => {
@@ -23,7 +22,9 @@ describe('hero text', () => {
     });
 
     test('textillate is called to animate text on page load', () => {
-        animateHeroText();
+        const $heroText = $('.hero__text');
+
+        bounceInText($heroText);
         expect($.fn.textillate).toHaveBeenCalledWith({
             initialDelay: 1200,
             in: {

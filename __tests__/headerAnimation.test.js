@@ -1,7 +1,7 @@
 // import jest when using ES modules
 import { expect, jest } from '@jest/globals';
 import $ from 'jquery';
-import { headerAnimation } from '../js/modules/headerAnimation.js';
+import { toggleHeaderOnScroll } from '../js/modules/headerAnimation.js';
 
 // makes jQuery globally available.
 global.$ = $;
@@ -26,7 +26,6 @@ const setupDOM = () => {
     </header>
     `;
     $window = $(window);
-    $header = $('.header');
 };
 
 beforeAll(() => {
@@ -35,7 +34,8 @@ beforeAll(() => {
 
 beforeEach(() => {
     setupDOM();
-    headerAnimation();
+    $header = $('.header');
+    toggleHeaderOnScroll($header);
 });
 
 // clear environment after each test

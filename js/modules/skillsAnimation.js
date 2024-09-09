@@ -1,4 +1,4 @@
-export function itemsInitialPosition(container, items) {
+export function moveItemsToBottom(container, items) {
     items.forEach((item) => {
         const containerBottom =
             container.getBoundingClientRect().top + container.offsetHeight;
@@ -8,17 +8,17 @@ export function itemsInitialPosition(container, items) {
     });
 }
 
-export function animateSkills(items) {
+export function resetTransformItems(items) {
     items.forEach((item) => {
         item.style.transform = 'none';
     });
 }
 
-export function skillsAnimation(container, items) {
+export function intersectionAnimation(container, items) {
     function handleIntersection(entries) {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                animateSkills(items);
+                resetTransformItems(items);
                 observer.disconnect();
             }
         });
@@ -31,7 +31,7 @@ export function skillsAnimation(container, items) {
     observer.observe(container);
 }
 
-export function skillsHoverEffect(items) {
+export function highlightOnHover(items) {
     items.forEach((hoveredCard) => {
         hoveredCard.addEventListener('mouseenter', () => {
             items.forEach((card) => {

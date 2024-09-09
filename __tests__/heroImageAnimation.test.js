@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, jest } from '@jest/globals';
 import $ from 'jquery';
-import { heroImageAnimation } from '../js/modules/heroAnimation';
+import { backgroundRipples } from '../js/modules/heroAnimation';
 
 // makes jQuery globally available.
 global.$ = $;
@@ -19,9 +19,11 @@ const setupDOM = () => {
 };
 
 $.fn.ripples = jest.fn();
+let $hero;
 
-beforeAll(() => {
+beforeEach(() => {
     setupDOM();
+    $hero = $('.hero');
     window.matchMedia = jest.fn((query) => ({
         matches: query.includes('max-width: 767px'),
     }));
@@ -30,7 +32,7 @@ beforeAll(() => {
 describe('Image ripple animation', () => {
     test('Ripple animation triggers on page load', () => {
         jest.useFakeTimers();
-        heroImageAnimation();
+        backgroundRipples($hero);
 
         expect($.fn.ripples).toHaveBeenCalled();
 

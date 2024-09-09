@@ -1,28 +1,34 @@
-import { logoAnimation } from './modules/logoAnimation.js';
-import {
-    animateHeroText,
-    heroImageAnimation,
-} from './modules/heroAnimation.js';
+import { fadeInDownText } from './modules/logoAnimation.js';
+import { bounceInText, backgroundRipples } from './modules/heroAnimation.js';
 import { burgerMenuToggle } from './modules/burgerMenuToggle.js';
-import { headerAnimation } from './modules/headerAnimation.js';
-import { introAnimation } from './modules/introAnimation.js';
+import { toggleHeaderOnScroll } from './modules/headerAnimation.js';
+import { fadeInUpText } from './modules/introAnimation.js';
 import {
-    skillsHoverEffect,
-    skillsAnimation,
-    itemsInitialPosition,
+    highlightOnHover,
+    intersectionAnimation,
+    moveItemsToBottom,
 } from './modules/skillsAnimation.js';
-import { footerReveal } from './modules/footerReveal.js';
+import { showFooter } from './modules/footerReveal.js';
 
 const container = document.querySelector('.skills__container');
 const gridItems = document.querySelectorAll('.skills__category');
+const $logoTitle = $('.logo__title');
+const $introText = $('.intro__text');
+const $heroText = $('.hero__text');
+const $hero = $('.hero');
+const $header = $('.header');
+const $sentinel = $('.sentinel');
+const $main = $('.main');
+const $footer = $('.footer');
+const $burgerMenuInput = $('.burger__menu input');
 
-heroImageAnimation();
-itemsInitialPosition(container, gridItems);
-logoAnimation();
-animateHeroText();
-burgerMenuToggle();
-headerAnimation();
-introAnimation();
-skillsAnimation(container, gridItems);
-skillsHoverEffect(gridItems);
-footerReveal();
+fadeInDownText($logoTitle);
+backgroundRipples($hero);
+moveItemsToBottom(container, gridItems);
+bounceInText($heroText);
+burgerMenuToggle($burgerMenuInput);
+toggleHeaderOnScroll($header);
+fadeInUpText($introText);
+intersectionAnimation(container, gridItems);
+highlightOnHover(gridItems);
+showFooter($main, $sentinel, $footer);
