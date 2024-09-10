@@ -8,7 +8,7 @@ import {
     resetTransformOnIntersect,
     moveItemsToBottom,
 } from './modules/skillsAnimation.js';
-import { showFooter } from './modules/footerReveal.js';
+import { showFooter } from './modules/showFooter.js';
 
 const container = document.querySelector('.skills__container');
 const gridItems = document.querySelectorAll('.skills__category');
