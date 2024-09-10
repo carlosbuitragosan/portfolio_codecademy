@@ -5,7 +5,7 @@ import { toggleHeaderOnScroll } from './modules/headerAnimation.js';
 import { fadeInUpText } from './modules/introAnimation.js';
 import {
     highlightOnHover,
-    intersectionAnimation,
+    resetTransformOnIntersect,
     moveItemsToBottom,
 } from './modules/skillsAnimation.js';
 import { showFooter } from './modules/footerReveal.js';
@@ -29,6 +29,6 @@ bounceInText($heroText);
 burgerMenuToggle($burgerMenuInput);
 toggleHeaderOnScroll($header);
 fadeInUpText($introText);
-intersectionAnimation(container, gridItems);
+resetTransformOnIntersect(container, gridItems);
 highlightOnHover(gridItems);
 showFooter($main, $sentinel, $footer);

@@ -1,3 +1,5 @@
+import { createIntersectionObserver } from './intersectionObserver.js';
+
 export function moveItemsToBottom(container, items) {
     items.forEach((item) => {
         const containerBottom =
@@ -14,21 +16,21 @@ export function resetTransformItems(items) {
     });
 }
 
-export function intersectionAnimation(container, items) {
-    function handleIntersection(entries) {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                resetTransformItems(items);
-                observer.disconnect();
-            }
-        });
-    }
+export function resetTransformOnIntersect(container, items) {
+    const handleIntersection = (entry, observer) => {
+        resetTransformItems(items);
+        observer.disconnect();
+    };
 
-    const observer = new IntersectionObserver(handleIntersection, {
-        threshold: 0.5,
-    });
+    const observerInstance = createIntersectionObserver(
+        handleIntersection,
+        null,
+        {
+            threshold: 0.5,
+        }
+    );
 
-    observer.observe(container);
+    observerInstance.observe(container);
 }
 
 export function highlightOnHover(items) {

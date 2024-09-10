@@ -1,3 +1,5 @@
+import { createIntersectionObserver } from './intersectionObserver.js';
+
 export function showFooter($main, $sentinel, $footer) {
     function updateMainBottomMargin() {
         const $footerHeight = $footer.outerHeight();
@@ -6,20 +8,21 @@ export function showFooter($main, $sentinel, $footer) {
     // update margin
     updateMainBottomMargin();
 
-    function handleIntersection(entries) {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                updateMainBottomMargin();
-                $footer.css('z-index', '3');
-            } else {
-                $footer.css('z-index', '-1');
-            }
-        });
-    }
+    const handleIntersection = (entry, oberver) => {
+        updateMainBottomMargin();
+        $footer.css('z-index', '3');
+    };
 
-    const observer = new IntersectionObserver(handleIntersection);
+    const onExit = (entry, observer) => {
+        $footer.css('z-index', '-1');
+    };
 
-    observer.observe($sentinel[0]);
+    const observerInstance = createIntersectionObserver(
+        handleIntersection,
+        onExit
+    );
+
+    observerInstance.observe($sentinel[0]);
 
     $(window).resize(() => {
         updateMainBottomMargin();

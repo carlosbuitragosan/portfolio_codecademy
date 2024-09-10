@@ -8,7 +8,6 @@ export function toggleHeaderOnScroll($header) {
         const currentScroll = $(this).scrollTop(); // distance of page from the top. it's only defined when you start scrolling.
 
         if (headerVisible && currentScroll > 150) {
-            console.log('hiding header');
             $header.slideUp('fast');
             headerVisible = false;
         } else if (!headerVisible && currentScroll <= 150) {

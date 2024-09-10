@@ -8,10 +8,10 @@ import {
 } from '@jest/globals';
 import {
     moveItemsToBottom,
-    resetTransformItems,
-    intersectionAnimation,
+    resetTransformOnIntersect,
     highlightOnHover,
 } from '../js/modules/skillsAnimation';
+import { createIntersectionObserver } from '../js/modules/intersectionObserver';
 
 let container;
 let gridItems;
@@ -110,7 +110,7 @@ describe('highlightOnHover()', () => {
         highlightOnHover(items);
     });
 
-    it('pplies class to all elements except the hovered one', () => {
+    it('Applies class to all elements except the hovered one', () => {
         // simulate mouseenter on first item
         const mouseEnterEvent = new Event('mouseenter');
         firstItem.dispatchEvent(mouseEnterEvent);
@@ -149,19 +149,42 @@ describe('highlightOnHover()', () => {
     });
 });
 
-describe('intersectionAnimation', () => {
-    describe('resetTransformItems', () => {
-        it('appies transform property to elements', () => {
-            // mock the style property fo each element
-            gridItems.forEach((item) => {
-                Object.defineProperty(item, 'style', {
-                    value: { transform: '' },
-                    writable: true,
-                });
-            });
+describe('IntersectionObserver', () => {
+    let observerCallback;
+    let observe;
+    let disconnect;
 
+    beforeEach(() => {
+        observe = jest.fn();
+        disconnect = jest.fn();
+
+        // mock the intersection observer
+        global.IntersectionObserver = jest.fn(function (callback) {
+            observerCallback = callback;
+            this.observe = observe;
+            this.disconnect = disconnect;
+        });
+
+        // mock the style property fo each element
+        gridItems.forEach((item) => {
+            Object.defineProperty(item, 'style', {
+                value: { transform: '' },
+                writable: true,
+            });
+        });
+    });
+
+    describe('resetTransformOnIntersect', () => {
+        it('appies transform property to elements', () => {
             // call the function to be tested
-            resetTransformItems(gridItems);
+            resetTransformOnIntersect(container, gridItems);
+
+            // trigger observer callback
+            const mockEntries = Array.from(gridItems).map((item) => ({
+                isIntersecting: true,
+                target: item,
+            }));
+            observerCallback(mockEntries, { disconnect });
 
             // Verify the transform style for each item
             gridItems.forEach((item) => {
@@ -171,32 +194,9 @@ describe('intersectionAnimation', () => {
     });
 
     describe('IntersectionObserver()', () => {
-        let observerCallback;
-        const observe = jest.fn();
-        const disconnect = jest.fn();
-
-        beforeEach(() => {
-            // mock the intersection observer
-            global.IntersectionObserver = jest.fn((callback) => {
-                observerCallback = callback;
-                return {
-                    observe,
-                    disconnect,
-                };
-            });
-
-            // mock the style property fo each element
-            gridItems.forEach((item) => {
-                Object.defineProperty(item, 'style', {
-                    value: { transform: '' },
-                    writable: true,
-                });
-            });
-        });
-
         it('detects intersection', () => {
             // call the function to test
-            intersectionAnimation(container, gridItems);
+            resetTransformOnIntersect(container, gridItems);
 
             // simulate intersection event
             const entry = {
@@ -205,14 +205,13 @@ describe('intersectionAnimation', () => {
             };
 
             // trigger callback handleIntersecion(entry)
-            observerCallback([entry]);
+            observerCallback([entry], { disconnect });
 
             // Verify the transform style for each item
             gridItems.forEach((item) => {
                 expect(item.style.transform).toBe('none');
             });
 
-            expect(typeof resetTransformItems).toBe('function');
             expect(observe).toHaveBeenCalled();
             expect(disconnect).toHaveBeenCalled();
         });
