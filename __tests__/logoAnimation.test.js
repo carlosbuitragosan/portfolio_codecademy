@@ -1,6 +1,5 @@
 import { afterEach, describe, jest } from '@jest/globals';
 import $ from 'jquery';
-
 import { fadeInDownText } from '../js/modules/logoAnimation';
 
 global.$ = $;

@@ -57,6 +57,7 @@ describe('moveItemsToBottom()', () => {
                 height: containerOffsetHeight,
             })
         );
+
         // Mock offsetHeight for container
         jest.spyOn(container, 'offsetHeight', 'get').mockReturnValue(
             containerOffsetHeight
