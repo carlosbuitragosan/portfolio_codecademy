@@ -8,14 +8,12 @@ export function showFooter($main, $sentinel, $footer) {
     // update margin
     updateMainBottomMargin();
 
-    // IntersectionObserver callback
-    const handleIntersection = (entry, oberver) => {
+    const handleIntersection = () => {
         updateMainBottomMargin();
         $footer.css('z-index', '3');
     };
 
-    const onExit = (entry, observer) => {
-        console.log('exiting');
+    const onExit = () => {
         $footer.css('z-index', '-1');
     };
 

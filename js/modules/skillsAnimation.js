@@ -20,6 +20,7 @@ export function resetTransformOnIntersect(container, items) {
     const handleIntersection = (entry, observer) => {
         resetTransformItems(items);
         observer.disconnect();
+        console.log(entry.target);
     };
 
     const observerInstance = createIntersectionObserver(
